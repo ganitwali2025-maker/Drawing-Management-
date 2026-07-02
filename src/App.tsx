@@ -408,17 +408,7 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
         {/* Main Container */}
         <div className="relative z-10 w-[92%] max-w-[1100px] bg-white rounded-[32px] shadow-[0_8px_40px_rgba(0,0,0,0.03),0_0_80px_rgba(76,175,80,0.04)] px-10 py-16 flex flex-col items-center justify-center animate-in fade-in zoom-in-[0.98] duration-700 border border-slate-50">
           
-          {/* Header (Logo + Name + Tagline) */}
-          <div className="flex flex-col items-center mb-12">
-            <div className="flex items-center space-x-3">
-               <div className="w-[42px] h-[42px] bg-[#2E7D32]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
-               <div className="flex flex-col items-start justify-center pt-1">
-                 <span className="text-[24px] font-[800] text-[#2E7D32] tracking-tight leading-none">Passary Refractories</span>
-                 <span className="text-[12px] font-bold text-[#F97316] uppercase tracking-wide mt-1">Forging Energy-Efficient Solutions</span>
-               </div>
-            </div>
-          </div>
-
+          {/* Header removed as requested */}
           {/* Text Section */}
           <div className="text-center mb-16 flex flex-col items-center">
             <span className="text-[18px] font-semibold text-[#4CAF50] mb-4 tracking-wide">Welcome to Passary Refractories</span>
