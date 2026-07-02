@@ -384,31 +384,13 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
         {`
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
           .font-poppins { font-family: 'Poppins', sans-serif; }
-          .animate-spin-slow { animation: spin 2s linear infinite; }
         `}
       </style>
-      <div className="h-screen w-screen bg-[#FAFCFA] font-poppins flex items-center justify-center relative overflow-hidden selection:bg-[#4CAF50]/20">
+      <div className="h-screen w-screen bg-white font-poppins flex items-center justify-center relative overflow-hidden selection:bg-[#4CAF50]/20">
         
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          {/* Subtle Wave Gradients */}
-          <div className="absolute bottom-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-[#4CAF50]/[0.04] to-transparent blur-[100px]"></div>
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-bl from-[#4CAF50]/[0.03] to-transparent blur-[100px]"></div>
+        {/* Main Container - No shadow or borders, pure flat layout */}
+        <div className="relative z-10 w-full max-w-[1100px] px-10 py-16 flex flex-col items-center justify-center animate-in fade-in zoom-in-[0.98] duration-700">
           
-          {/* Faint Grid / Lines */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwaXRoIGQ9Ik0wIDM5LjVoNDBWNDBIMHptMzkuNSAwdjQwaC41VjM5LjV6IiBmaWxsPSJyZ2JhKDc2LCAxNzUsIDgwLCAwLjAzKSIvPjwvc3ZnPg==')] opacity-50"></div>
-          
-          {/* Floating Dots */}
-          <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-[#4CAF50]/30 animate-pulse"></div>
-          <div className="absolute top-[35%] right-[20%] w-3 h-3 rounded-full bg-[#4CAF50]/20 animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-[25%] left-[25%] w-1.5 h-1.5 rounded-full bg-[#4CAF50]/40 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          <div className="absolute bottom-[35%] right-[15%] w-2.5 h-2.5 rounded-full bg-[#4CAF50]/30 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        </div>
-
-        {/* Main Container */}
-        <div className="relative z-10 w-[92%] max-w-[1100px] bg-white rounded-[32px] shadow-[0_8px_40px_rgba(0,0,0,0.03),0_0_80px_rgba(76,175,80,0.04)] px-10 py-16 flex flex-col items-center justify-center animate-in fade-in zoom-in-[0.98] duration-700 border border-slate-50">
-          
-          {/* Header removed as requested */}
           {/* Text Section */}
           <div className="text-center mb-16 flex flex-col items-center">
             <span className="text-[18px] font-semibold text-[#4CAF50] mb-4 tracking-wide">Welcome to Passary Refractories</span>
@@ -421,7 +403,7 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
           {/* Center Animation (Spinner) */}
           <div className="relative mb-16 mt-4 flex items-center justify-center">
              {/* Soft glow behind spinner */}
-             <div className="absolute w-36 h-36 bg-[#4CAF50]/10 rounded-full blur-[30px]"></div>
+             <div className="absolute w-36 h-36 bg-[#4CAF50]/5 rounded-full blur-[30px]"></div>
              
              {/* 12-petal premium spinner (85px) */}
              <div className="relative w-[85px] h-[85px]">
@@ -442,12 +424,11 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
           <div className="w-full max-w-[540px] flex flex-col items-center">
             <p className="text-[18px] font-[700] text-[#111827] mb-6 tracking-wide">Loading Dashboard...</p>
             
-            <div className="w-full h-4 bg-slate-100/80 rounded-full overflow-hidden mb-5 relative shadow-inner border border-slate-200/50">
+            <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden mb-5 relative shadow-inner">
                <div 
-                 className="h-full bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] rounded-full transition-all duration-100 ease-linear shadow-[0_0_12px_rgba(76,175,80,0.5)]"
+                 className="h-full bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] rounded-full transition-all duration-100 ease-linear"
                  style={{ width: `${progress}%` }}
                >
-                 <div className="absolute top-0 left-0 w-full h-[40%] bg-white/20 rounded-t-full"></div>
                </div>
             </div>
             
