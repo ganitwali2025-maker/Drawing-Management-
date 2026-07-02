@@ -1,0 +1,6 @@
+{
+  "name": "SkillSet",
+  "description": "A modern, highly polished library and learning management dashboard with claymorphic 3D designs, comprehensive book catalog, user progress tracking, and interactive workspace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
