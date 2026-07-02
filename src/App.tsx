@@ -379,16 +379,15 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   const steps = [
-    { label: 'Initializing System...', threshold: 10 },
-    { label: 'Connecting to Server...', threshold: 30 },
-    { label: 'Preparing Engineering Drawings...', threshold: 50 },
-    { label: 'Loading Documents...', threshold: 70 },
-    { label: 'Initializing Workspace...', threshold: 90 },
-    { label: 'Ready to Start...', threshold: 100 },
+    { label: 'Initializing System', threshold: 15 },
+    { label: 'Loading Dashboard', threshold: 35 },
+    { label: 'Preparing Drawings', threshold: 60 },
+    { label: 'Loading Documents', threshold: 85 },
+    { label: 'Almost Ready...', threshold: 100 },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F4F6F4] font-sans flex items-center justify-center relative overflow-hidden selection:bg-[#6b8e23]/20">
+    <div className="h-screen w-screen bg-[#F4F6F4] font-sans flex items-center justify-center relative overflow-hidden selection:bg-[#6b8e23]/20">
       {/* Background Gradients & Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[70%] rounded-full bg-[#6b8e23]/[0.05] blur-[120px] animate-glow-pulse"></div>
@@ -397,116 +396,117 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwaXRoIGQ9Ik0wIDM5LjVoNDBWNDBIMHptMzkuNSAwdjQwaC41VjM5LjV6IiBmaWxsPSJyZ2JhKDEwNywgMTQyLCAzNSwgMC4wNCkiLz48L3N2Zz4=')]"></div>
       </div>
 
-      {/* Main Glass Card */}
-      <div className="relative z-10 w-full max-w-[900px] bg-white/80 backdrop-blur-xl border border-white rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.05),0_0_40px_rgba(107,142,35,0.05)] p-12 flex flex-col items-center animate-in zoom-in-95 duration-700">
+      {/* Main Glass Card (Maximized for single screen, no scroll) */}
+      <div className="relative z-10 w-full max-w-[1000px] h-full max-h-[800px] bg-white/85 backdrop-blur-2xl border border-white rounded-[32px] shadow-[0_30px_80px_rgba(0,0,0,0.06),0_0_50px_rgba(107,142,35,0.05)] p-10 flex flex-col justify-between items-center animate-in zoom-in-95 duration-700">
         
-        {/* Header inside card */}
-        <div className="w-full flex justify-between items-center mb-16 opacity-80">
-           <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 bg-[#6b8e23]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
-              <span className="font-bold text-slate-800 tracking-tight">Passary Refractories</span>
+        {/* Top Section: Headers */}
+        <div className="w-full text-center flex flex-col items-center mt-2">
+           <div className="flex items-center justify-center space-x-2.5 mb-5 bg-[#E8F5E9] px-4 py-1.5 rounded-full border border-green-100">
+              <div className="w-4 h-4 bg-[#6b8e23]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+              <span className="text-[12px] font-bold text-[#6b8e23] uppercase tracking-widest">Welcome to Passary Refractories</span>
            </div>
-           <div className="text-[11px] font-bold tracking-widest text-slate-400 uppercase">
-             Forging Energy-Efficient Solutions
-           </div>
+           <h1 className="text-[40px] font-[800] text-slate-900 mb-4 tracking-tight leading-none">Drawing Management Dashboard</h1>
+           <p className="text-[16px] text-slate-500 font-medium max-w-[650px] leading-relaxed">
+             Manage all engineering drawings in one place. Easily organize files, upload new documents, and keep project information secure and well arranged.
+           </p>
         </div>
 
-        {/* 3D Blueprint Tube Animation Area */}
-        <div className="relative w-full h-[220px] flex items-center justify-center mb-16 animate-float-slow">
+        {/* Center Section: 3D Blueprint Tube Animation Area */}
+        <div className="relative w-full flex-1 flex items-center justify-center my-4 animate-float-slow">
           {/* Ambient Glow behind tube */}
-          <div className="absolute w-[300px] h-[300px] bg-[#6b8e23]/10 rounded-full blur-[60px] animate-glow-pulse"></div>
+          <div className="absolute w-[350px] h-[350px] bg-[#6b8e23]/10 rounded-full blur-[70px] animate-glow-pulse"></div>
           
           {/* Circular Rings on the floor */}
-          <div className="absolute w-[400px] h-[400px] rounded-full border border-[#6b8e23]/10 rotate-x-60 animate-[roll_20s_linear_infinite]"></div>
-          <div className="absolute w-[300px] h-[300px] rounded-full border border-[#6b8e23]/20 rotate-x-60 animate-[roll_15s_linear_infinite_reverse]"></div>
+          <div className="absolute w-[450px] h-[450px] rounded-full border border-[#6b8e23]/10 rotate-x-60 animate-[roll_25s_linear_infinite]"></div>
+          <div className="absolute w-[350px] h-[350px] rounded-full border border-[#6b8e23]/20 rotate-x-60 animate-[roll_18s_linear_infinite_reverse]"></div>
           
           {/* The Tube Construction (Pure CSS) */}
-          <div className="relative z-10 flex items-center justify-center shadow-2xl rounded-full">
+          <div className="relative z-10 flex items-center justify-center shadow-2xl rounded-full scale-[0.95] lg:scale-100">
             {/* The blueprint sliding out */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[280px] h-[160px] bg-white border border-slate-200 shadow-sm origin-left animate-blueprint-slide overflow-hidden flex flex-col z-0 rounded-r-md">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[320px] h-[180px] bg-white border border-slate-200 shadow-sm origin-left animate-blueprint-slide overflow-hidden flex flex-col z-0 rounded-r-md">
               {/* Blueprint grid lines */}
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMTkuNWgyMFYyMEgwek0xOS41IDB2MjBoLjVWMHoiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wNSkiLz48L3N2Zz4=')]"></div>
               {/* Fake drawing content */}
-              <div className="m-4 border-2 border-blue-900/10 h-full flex flex-col">
-                <div className="border-b-2 border-blue-900/10 h-6 flex justify-end px-2 items-center"><div className="w-12 h-2 bg-blue-900/10"></div></div>
-                <div className="flex-1 p-2 flex gap-2">
-                  <div className="w-1/2 h-full border border-blue-900/10 rounded-sm"></div>
-                  <div className="w-1/2 h-full border border-blue-900/10 rounded-sm flex flex-col gap-1 p-1">
-                    <div className="w-full h-2 bg-blue-900/10"></div>
-                    <div className="w-2/3 h-2 bg-blue-900/10"></div>
+              <div className="m-5 border-[3px] border-blue-900/10 h-full flex flex-col">
+                <div className="border-b-[3px] border-blue-900/10 h-8 flex justify-end px-3 items-center"><div className="w-16 h-3 bg-blue-900/10"></div></div>
+                <div className="flex-1 p-3 flex gap-3">
+                  <div className="w-1/2 h-full border-2 border-blue-900/10 rounded-sm bg-blue-50/30"></div>
+                  <div className="w-1/2 h-full border-2 border-blue-900/10 rounded-sm flex flex-col gap-2 p-2">
+                    <div className="w-full h-3 bg-blue-900/10"></div>
+                    <div className="w-3/4 h-3 bg-blue-900/10"></div>
+                    <div className="w-1/2 h-3 bg-blue-900/10"></div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* The physical tube body */}
-            <div className="relative z-10 w-[240px] h-[70px] rounded-[35px] bg-gradient-to-r from-slate-100 via-white to-slate-200 shadow-[inset_0_-10px_20px_rgba(0,0,0,0.1),0_15px_25px_rgba(0,0,0,0.15)] flex items-center px-1">
+            <div className="relative z-10 w-[260px] h-[76px] rounded-[38px] bg-gradient-to-r from-slate-100 via-white to-slate-200 shadow-[inset_0_-12px_25px_rgba(0,0,0,0.1),0_20px_30px_rgba(0,0,0,0.15)] flex items-center px-1">
                {/* Left Endcap */}
-               <div className="w-[66px] h-[66px] rounded-full bg-gradient-to-br from-[#8C9D5A] to-[#4A631E] border-[3px] border-white/50 shadow-[inset_0_2px_10px_rgba(255,255,255,0.4),2px_0_10px_rgba(0,0,0,0.2)] flex items-center justify-center relative overflow-hidden group">
-                 {/* Shiny rim */}
+               <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#8C9D5A] to-[#4A631E] border-[3px] border-white/50 shadow-[inset_0_2px_12px_rgba(255,255,255,0.4),2px_0_12px_rgba(0,0,0,0.2)] flex items-center justify-center relative overflow-hidden group">
                  <div className="absolute inset-0 rounded-full border-[2px] border-[#a8bd6d] opacity-50"></div>
-                 {/* Logo mark on endcap */}
-                 <div className="w-6 h-6 bg-white/90 scale-125 drop-shadow-md" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+                 <div className="w-7 h-7 bg-white/90 scale-125 drop-shadow-md" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
                </div>
                
                {/* Tube Body detailing */}
-               <div className="flex-1 h-full px-6 flex items-center justify-between opacity-30">
+               <div className="flex-1 h-full px-8 flex items-center justify-between opacity-30">
                  <div className="w-px h-full bg-gradient-to-b from-transparent via-slate-800 to-transparent"></div>
                  <div className="w-px h-full bg-gradient-to-b from-transparent via-slate-800 to-transparent"></div>
                  <div className="w-px h-full bg-gradient-to-b from-transparent via-slate-800 to-transparent"></div>
                </div>
 
                {/* Right Endcap (open/rim) */}
-               <div className="w-[12px] h-[66px] bg-gradient-to-b from-slate-200 to-slate-400 rounded-r-[6px] border-l border-slate-300"></div>
+               <div className="w-[14px] h-[72px] bg-gradient-to-b from-slate-200 to-slate-400 rounded-r-[7px] border-l border-slate-300 shadow-inner"></div>
             </div>
           </div>
         </div>
 
-        {/* Text Details */}
-        <h2 className="text-[32px] font-[800] text-[#4A631E] mb-2 tracking-tight">Drawing Management Dashboard</h2>
-        <p className="text-[16px] text-slate-500 font-medium mb-12">Loading Engineering Workspace...</p>
+        {/* Bottom Section: Progress and Steps */}
+        <div className="w-full max-w-[800px] flex flex-col items-center">
+          <p className="text-[17px] text-slate-800 font-[800] mb-5 tracking-wide">Loading Engineering Workspace...</p>
 
-        {/* Progress Bar Area */}
-        <div className="w-full max-w-[700px] mb-12">
-          <div className="flex items-center justify-between mb-4">
-            <div className="h-4 w-full bg-slate-100 rounded-full overflow-hidden shadow-inner relative flex-1 mr-6 border border-slate-200/60">
+          {/* Progress Bar */}
+          <div className="w-full flex items-center justify-between mb-8">
+            <div className="h-[22px] w-full bg-slate-100 rounded-full overflow-hidden shadow-inner relative flex-1 mr-6 border border-slate-200/60 p-[3px]">
               {/* Animated Fill */}
               <div 
-                className="h-full bg-gradient-to-r from-[#6b8e23] to-[#8C9D5A] rounded-full transition-all duration-100 ease-out relative shadow-[0_0_15px_rgba(107,142,35,0.4)]"
+                className="h-full bg-gradient-to-r from-[#8C9D5A] to-[#5a7c21] rounded-full transition-all duration-100 ease-out relative shadow-[0_0_20px_rgba(107,142,35,0.4)] flex items-center overflow-hidden"
                 style={{ width: `${progress}%` }}
               >
                 {/* Shine effect on progress bar */}
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-white/20 rounded-t-full"></div>
+                <div className="absolute top-0 left-0 w-full h-[40%] bg-white/30 rounded-t-full"></div>
+                {/* Diagonal stripes for industrial feel */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMjBMMjAgMEgxMGwtMTAgMTB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz48L3N2Zz4=')] opacity-50"></div>
               </div>
             </div>
-            <span className="text-[28px] font-black text-slate-800 tracking-tighter w-16 text-right tabular-nums">
+            <span className="text-[34px] font-black text-[#5a7c21] tracking-tighter w-[85px] text-right tabular-nums leading-none">
               {progress}%
             </span>
           </div>
 
-          {/* Sequential Loading Steps */}
+          {/* Sequential Loading Steps (5 steps) */}
           <div className="flex items-start justify-between w-full px-2">
             {steps.map((step, index) => {
               const isCompleted = progress >= step.threshold;
               const isActive = progress >= (index === 0 ? 0 : steps[index-1].threshold) && progress < step.threshold;
               
               return (
-                <div key={index} className="flex flex-col items-center w-[16%] relative">
-                  {/* Connector Line (except for last) */}
+                <div key={index} className="flex flex-col items-center w-[20%] relative">
+                  {/* Connector Line */}
                   {index < steps.length - 1 && (
-                     <div className={`absolute top-3.5 left-[60%] w-[80%] border-t-2 border-dashed transition-colors duration-500 ${isCompleted ? 'border-[#6b8e23]' : 'border-slate-200'}`}></div>
+                     <div className={`absolute top-4 left-[55%] w-[90%] border-t-[3px] border-dotted transition-colors duration-500 ${isCompleted ? 'border-[#6b8e23]' : 'border-slate-200'}`}></div>
                   )}
                   
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-3 transition-all duration-500 relative z-10 ${isCompleted ? 'bg-[#6b8e23] text-white shadow-md shadow-[#6b8e23]/30 scale-110' : isActive ? 'bg-white border-2 border-[#6b8e23] text-[#6b8e23]' : 'bg-slate-100 text-slate-300'}`}>
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center mb-3.5 transition-all duration-500 relative z-10 ${isCompleted ? 'bg-[#6b8e23] text-white shadow-lg shadow-[#6b8e23]/30 scale-110' : isActive ? 'bg-white border-[3px] border-[#6b8e23] text-[#6b8e23]' : 'bg-slate-100 text-slate-300'}`}>
                     {isCompleted ? (
-                      <CheckCircle2 className="w-4 h-4" strokeWidth={3} />
+                      <CheckCircle2 className="w-5 h-5" strokeWidth={3} />
                     ) : isActive ? (
-                      <Loader2 className="w-4 h-4 animate-spin" strokeWidth={3} />
+                      <Loader2 className="w-5 h-5 animate-spin" strokeWidth={3} />
                     ) : (
-                      <div className="w-2 h-2 rounded-full bg-slate-300"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                     )}
                   </div>
-                  <span className={`text-[11px] font-bold text-center leading-tight transition-colors duration-300 ${isCompleted ? 'text-slate-800' : isActive ? 'text-[#6b8e23]' : 'text-slate-400'}`}>
+                  <span className={`text-[12px] font-bold text-center leading-snug transition-colors duration-300 max-w-[100px] ${isCompleted ? 'text-slate-800' : isActive ? 'text-[#6b8e23]' : 'text-slate-400'}`}>
                     {step.label}
                   </span>
                 </div>
@@ -515,13 +515,11 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
           </div>
         </div>
 
-        {/* Footer features */}
-        <div className="flex items-center space-x-6 text-[12px] font-bold text-slate-400 uppercase tracking-wider">
-           <span className="flex items-center"><ShieldCheck className="w-4 h-4 mr-1.5 text-[#6b8e23]" /> Secure</span>
-           <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-           <span className="flex items-center">Reliable</span>
-           <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-           <span className="flex items-center">Efficient</span>
+        {/* Footer */}
+        <div className="w-full mt-6 text-center border-t border-slate-100 pt-6">
+           <p className="text-[12px] font-bold text-slate-400 tracking-wider">
+             © 2026 Passary Refractories | <span className="text-[#F97316]">Forging Energy-Efficient Solutions</span>
+           </p>
         </div>
 
       </div>
