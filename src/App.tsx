@@ -419,17 +419,22 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
           </div>
 
           {/* Center Animation (Spinner) */}
-          <div className="relative mb-14 flex items-center justify-center">
-             {/* Glow behind spinner */}
-             <div className="absolute w-32 h-32 bg-[#4CAF50]/10 rounded-full blur-[25px]"></div>
+          <div className="relative mb-16 mt-4 flex items-center justify-center">
+             {/* Soft glow behind spinner */}
+             <div className="absolute w-36 h-36 bg-[#4CAF50]/10 rounded-full blur-[30px]"></div>
              
-             {/* 12-petal iOS style spinner */}
-             <div className="relative w-[72px] h-[72px] animate-spin-slow">
-               {[...Array(12)].map((_, i) => (
-                 <div key={i} className="absolute inset-0 flex justify-center" style={{ transform: `rotate(${i * 30}deg)` }}>
-                   <div className="w-[6px] h-[16px] rounded-full bg-[#4CAF50]" style={{ opacity: 0.15 + (0.85 * (i / 11)) }}></div>
-                 </div>
-               ))}
+             {/* 12-petal premium spinner (85px) */}
+             <div className="relative w-[85px] h-[85px]">
+               <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.1s', animationTimingFunction: 'linear' }}>
+                 {[...Array(12)].map((_, i) => (
+                   <div key={i} className="absolute inset-0 flex justify-center" style={{ transform: `rotate(${i * 30}deg)` }}>
+                     <div 
+                        className="w-[8px] h-[22px] rounded-full bg-[#4CAF50]" 
+                        style={{ opacity: 0.15 + (0.85 * (i / 11)) }}
+                     ></div>
+                   </div>
+                 ))}
+               </div>
              </div>
           </div>
 
