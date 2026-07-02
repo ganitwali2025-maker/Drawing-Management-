@@ -393,7 +393,6 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
           
           {/* Text Section */}
           <div className="text-center mb-16 flex flex-col items-center">
-            <span className="text-[18px] font-semibold text-[#4CAF50] mb-4 tracking-wide">Welcome to Passary Refractories</span>
             <h1 className="text-[44px] lg:text-[52px] font-[800] text-[#111827] mb-6 tracking-tight leading-none">Drawing Management Dashboard</h1>
             <p className="text-[17px] text-slate-500 font-medium max-w-[600px] leading-[1.7]">
               Preparing your workspace... Please wait while we load<br/>your engineering drawings and dashboard.
