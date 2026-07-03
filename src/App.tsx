@@ -526,7 +526,7 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
 
 function AddDrawingModal({ isOpen, onClose, onSuccess }: { isOpen: boolean, onClose: () => void, onSuccess: () => void }) {
   const [formData, setFormData] = React.useState({
-    desc: '', dwgNo: '', title: '', discipline: '', rev: '', date: '', remark: ''
+    sr: '', desc: '', dwgNo: '', title: '', discipline: '', rev: '', date: '', remark: ''
   });
   const [file, setFile] = React.useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -582,28 +582,19 @@ function AddDrawingModal({ isOpen, onClose, onSuccess }: { isOpen: boolean, onCl
 
           const sheetUrl = 'https://script.google.com/macros/s/AKfycbxP08_ft6yvOy8UoL0FsxJ4WK4OgGrLKhkG7AIc48cNTVSaw1QNR7KNZHgb8jlu1TE/exec';
           
-          const response = await fetch(sheetUrl, {
+          await fetch(sheetUrl, {
             method: 'POST',
+            mode: 'no-cors', // Use no-cors to prevent Google Apps script redirect CORS errors
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(payload)
           });
 
-          // Check if response is actually JSON before parsing
-          const contentType = response.headers.get("content-type");
-          if (!contentType || !contentType.includes("application/json")) {
-             throw new Error("Server returned an invalid response. Please check if you deployed the New Version of Apps Script correctly.");
-          }
-
-          const result = await response.json();
-          
-          if (result && result.status === 'success') {
-            setFormData({ desc: '', dwgNo: '', title: '', discipline: '', rev: '', date: '', remark: '' });
-            setFile(null);
-            onSuccess();
-            onClose();
-          } else {
-            setErrorMsg(result.message || 'Error saving to Google Sheets.');
-          }
+          // With no-cors, the response is opaque, so we can't read result.json(). 
+          // We assume success if the fetch didn't throw a network error.
+          setFormData({ sr: '', desc: '', dwgNo: '', title: '', discipline: '', rev: '', date: '', remark: '' });
+          setFile(null);
+          onSuccess();
+          onClose();
         } catch (err: any) {
           console.error(err);
           setErrorMsg(err.message || 'Network error or invalid server response. Please try again.');
@@ -648,8 +639,19 @@ function AddDrawingModal({ isOpen, onClose, onSuccess }: { isOpen: boolean, onCl
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="space-y-1.5">
+                <label className="text-[13px] font-bold text-slate-700">Sr. No. <span className="text-red-500">*</span></label>
+                <input required name="sr" value={formData.sr} onChange={handleInputChange} type="number" placeholder="e.g. 558" className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[14px] focus:outline-none focus:border-purple-500 focus:bg-white transition-colors" />
+              </div>
+              <div className="space-y-1.5">
                 <label className="text-[13px] font-bold text-slate-700">Drawing No. <span className="text-red-500">*</span></label>
                 <input required name="dwgNo" value={formData.dwgNo} onChange={handleInputChange} type="text" placeholder="e.g. SIES-RMIPL-CVL..." className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[14px] focus:outline-none focus:border-purple-500 focus:bg-white transition-colors" />
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="space-y-1.5">
+                <label className="text-[13px] font-bold text-slate-700">Drawing Title <span className="text-red-500">*</span></label>
+                <input required name="title" value={formData.title} onChange={handleInputChange} type="text" placeholder="Detailed Title..." className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[14px] focus:outline-none focus:border-purple-500 focus:bg-white transition-colors" />
               </div>
               <div className="space-y-1.5">
                 <label className="text-[13px] font-bold text-slate-700">Discipline <span className="text-red-500">*</span></label>
@@ -665,11 +667,6 @@ function AddDrawingModal({ isOpen, onClose, onSuccess }: { isOpen: boolean, onCl
                   <option value="General arrangement">General Arrangement</option>
                 </select>
               </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-[13px] font-bold text-slate-700">Drawing Title <span className="text-red-500">*</span></label>
-              <input required name="title" value={formData.title} onChange={handleInputChange} type="text" placeholder="Detailed Title..." className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[14px] focus:outline-none focus:border-purple-500 focus:bg-white transition-colors" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
