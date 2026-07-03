@@ -693,7 +693,7 @@ export default function App() {
 
   React.useEffect(() => {
     const fetchSheetData = async () => {
-      const sheetUrl = import.meta.env.VITE_SHEET_API_URL;
+      const sheetUrl = 'https://script.google.com/macros/s/AKfycbxP08_ft6yvOy8UoL0FsxJ4WK4OgGrLKhkG7AIc48cNTVSaw1QNR7KNZHgb8jlu1TE/exec';
       if (!sheetUrl) {
         setTableData(dummyData);
         setLoading(false);
