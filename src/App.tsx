@@ -5,7 +5,8 @@ import {
   FolderOpen, Grid, BarChart3, BookOpen, Users,
   Building2, Factory, Settings as GearIcon, Waypoints, Zap, Gauge, Box, LayoutTemplate,
   ArrowRight, MoreHorizontal, FileDown, ShieldCheck, Clock, Palette, Target, TrendingUp,
-  Loader2, CheckCircle2
+  Loader2, CheckCircle2, Flame, Layers, Component, Hammer, Filter, Plus,
+  MoreVertical, ChevronsUpDown, FileSpreadsheet
 } from 'lucide-react';
 
 const SidebarItem = ({ icon: Icon, label, active = false }: { icon: any, label: string, active?: boolean }) => (
@@ -22,14 +23,14 @@ const SidebarItem = ({ icon: Icon, label, active = false }: { icon: any, label: 
 );
 
 const DisciplineCard = ({ icon: Icon, title, desc, count, image, imgSize = "", imgClass = "", blendMode = "mix-blend-multiply" }: { icon: any, title: string, desc: string, count: number, image?: string, imgSize?: string, imgClass?: string, blendMode?: string }) => (
-  <div className="bg-white rounded-[24px] border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-[360px] cursor-pointer relative overflow-hidden">
+  <div className="bg-white rounded-[24px] border border-slate-200 shadow-sm hover:shadow-[0_4px_15px_rgba(249,115,22,0.15)] hover:border-[#F97316] transition-all duration-300 group flex flex-col h-[360px] cursor-pointer relative overflow-hidden">
     
     {/* Header Bar */}
     <div className="px-6 py-4 border-b border-slate-100 flex items-center space-x-4 bg-slate-50/50 relative z-10">
-      <div className="w-[42px] h-[42px] rounded-xl bg-white shadow-sm border border-slate-200 text-[#2E7D32] flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#2E7D32] group-hover:text-white transition-all duration-300">
-        <Icon className="w-5 h-5" strokeWidth={2} />
+      <div className="w-[48px] h-[48px] rounded-2xl bg-gradient-to-br from-[#6b8e23]/10 to-transparent border border-[#6b8e23]/20 text-[#6b8e23] flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:from-[#F97316] group-hover:to-[#ea580c] group-hover:text-white group-hover:border-[#F97316] shadow-inner transition-all duration-300">
+        <Icon className="w-6 h-6" strokeWidth={1.5} />
       </div>
-      <h3 className="text-[18px] font-bold text-slate-800 leading-none tracking-tight group-hover:text-[#2E7D32] transition-colors">{title}</h3>
+      <h3 className="text-[19px] font-poppins font-[800] text-slate-800 leading-none tracking-wide group-hover:text-[#F97316] transition-colors">{title}</h3>
     </div>
 
     {/* Image Area */}
@@ -49,26 +50,26 @@ const DisciplineCard = ({ icon: Icon, title, desc, count, image, imgSize = "", i
     <div className="px-6 py-4 border-t border-slate-100 bg-white relative z-10 flex items-center justify-between mt-auto">
       <div className="flex items-center space-x-2">
         <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Drawings</span>
-        <span className="text-lg font-black text-slate-800">{count}</span>
+        <span className="text-lg text-slate-800">{count}</span>
       </div>
-      <span className="text-sm font-bold text-[#2E7D32] group-hover:translate-x-1 transition-transform flex items-center">
+      <span className="text-sm font-bold text-[#6b8e23] group-hover:text-[#F97316] group-hover:translate-x-1 transition-all flex items-center">
         View <ArrowRight className="w-4 h-4 ml-1" />
       </span>
     </div>
   </div>
 );
 
-const ActionCard = ({ icon: Icon, title, desc, btnText, colorTheme }: { icon: any, title: string, desc: string, btnText: string, colorTheme: 'green' | 'purple' | 'orange' | 'amber' }) => {
+const ActionCard = ({ icon: Icon, title, desc, btnText, colorTheme, onClick }: { icon: any, title: string, desc: string, btnText: string, colorTheme: 'green' | 'purple' | 'orange' | 'amber', onClick?: () => void }) => {
   const themes = {
-    green: { bg: 'bg-[#E8F5E9]', text: 'text-[#2E7D32]', border: 'border-green-100', hover: 'hover:border-green-300' },
-    purple: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-100', hover: 'hover:border-purple-300' },
-    orange: { bg: 'bg-orange-50', text: 'text-[#FF6B35]', border: 'border-orange-100', hover: 'hover:border-orange-300' },
-    amber: { bg: 'bg-amber-50', text: 'text-amber-600', border: 'border-amber-100', hover: 'hover:border-amber-300' },
+    green: { bg: 'bg-green-100', text: 'text-green-700', hover: 'hover:border-green-300', border: 'border-green-200' },
+    purple: { bg: 'bg-purple-100', text: 'text-purple-700', hover: 'hover:border-purple-300', border: 'border-purple-200' },
+    orange: { bg: 'bg-orange-100', text: 'text-orange-700', hover: 'hover:border-orange-300', border: 'border-orange-200' },
+    amber: { bg: 'bg-amber-100', text: 'text-amber-700', hover: 'hover:border-amber-300', border: 'border-amber-200' },
   };
   const theme = themes[colorTheme];
 
   return (
-    <div className={`bg-white rounded-[20px] p-6 border shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex flex-col items-center text-center ${theme.border} ${theme.hover} cursor-pointer group`}>
+    <div onClick={onClick} className={`bg-white rounded-[20px] p-6 border shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex flex-col items-center text-center ${theme.border} ${theme.hover} cursor-pointer group`}>
       <div className={`w-16 h-16 rounded-2xl ${theme.bg} ${theme.text} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
         <Icon className="w-8 h-8" strokeWidth={1.5} />
       </div>
@@ -82,7 +83,7 @@ const ActionCard = ({ icon: Icon, title, desc, btnText, colorTheme }: { icon: an
   );
 };
 
-function DashboardView({ onLogout }: { onLogout: () => void }) {
+function DashboardView({ onLogout, onRegister }: { onLogout: () => void, onRegister: () => void }) {
   return (
     <div className="min-h-screen bg-[#F4F6F4] font-sans text-slate-900 flex overflow-hidden selection:bg-[#2E7D32]/20 selection:text-[#2E7D32] antialiased relative">
       {/* Ambient background blur for color mixing */}
@@ -148,7 +149,7 @@ function DashboardView({ onLogout }: { onLogout: () => void }) {
                 {/* Quick Access Buttons */}
                 <div className="mt-2">
                   <div className="flex flex-wrap items-center gap-3">
-                    <button className="flex items-center gap-3 px-3 py-2 bg-green-50/80 border border-green-100 rounded-xl hover:bg-green-100/80 transition-colors group">
+                    <button onClick={onRegister} className="flex items-center gap-3 px-3 py-2 bg-green-50/80 border border-green-100 rounded-xl hover:bg-green-100/80 transition-colors group">
                       <div className="w-7 h-7 rounded-lg bg-green-100/80 flex items-center justify-center text-green-700 group-hover:scale-105 transition-transform">
                         <FileText className="w-4 h-4" strokeWidth={2.5} />
                       </div>
@@ -202,6 +203,7 @@ function DashboardView({ onLogout }: { onLogout: () => void }) {
                   desc="View, search and manage all drawings in the centralized system."
                   btnText="Go to Register"
                   colorTheme="green"
+                  onClick={onRegister}
                 />
                 <ActionCard 
                   icon={PlusCircle} 
@@ -386,23 +388,46 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
           .font-poppins { font-family: 'Poppins', sans-serif; }
         `}
       </style>
-      <div className="h-screen w-screen bg-white font-poppins flex items-center justify-center relative overflow-hidden selection:bg-[#4CAF50]/20">
+      <div className="h-screen w-screen bg-white font-poppins flex flex-col relative overflow-hidden selection:bg-[#6b8e23]/20">
         
-        {/* Main Container - No shadow or borders, pure flat layout */}
-        <div className="relative z-10 w-full max-w-[1100px] px-10 py-16 flex flex-col items-center justify-center animate-in fade-in zoom-in-[0.98] duration-700">
-          
-          {/* Text Section */}
-          <div className="text-center mb-16 flex flex-col items-center">
-            <h1 className="text-[44px] lg:text-[52px] font-[800] text-[#111827] mb-6 tracking-tight leading-none">Drawing Management Dashboard</h1>
-            <p className="text-[17px] text-slate-500 font-medium max-w-[600px] leading-[1.7]">
-              Preparing your workspace... Please wait while we load<br/>your engineering drawings and dashboard.
-            </p>
+        {/* Header */}
+        <header className="h-[84px] bg-white/50 backdrop-blur-md border-b border-white/40 flex items-center justify-between px-8 lg:px-12 sticky top-0 z-50 shadow-[0_4px_30px_rgb(0,0,0,0.02)] flex-shrink-0">
+          <div className="flex items-center space-x-3.5">
+            <div className="flex items-center justify-center w-[48px] h-[48px] overflow-hidden">
+              <div className="w-full h-full bg-[#6b8e23] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+            </div>
+            <div className="flex items-center pt-1">
+              <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
+              <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Forging Energy-Efficient Solutions</span>
+            </div>
           </div>
+          
+          <div className="hidden md:flex items-center space-x-8 text-[14px] font-bold text-slate-900 tracking-wider">
+            <a href="#" className="hover:text-[#F97316] transition-colors">HOME</a>
+            <a href="#" className="hover:text-[#F97316] transition-colors">ABOUT US</a>
+            <a href="#" className="hover:text-[#F97316] transition-colors">SERVICES</a>
+            <a href="#" className="hover:text-[#F97316] transition-colors">CONTACT</a>
+            
+            <button 
+              disabled
+              className="px-8 py-3 bg-[#F97316] text-white text-[14px] font-bold rounded-xl shadow-[0_4px_14px_rgba(249,115,22,0.3)] transition-all flex items-center justify-center tracking-wide uppercase opacity-80 cursor-not-allowed"
+            >
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              LOADING
+            </button>
+          </div>
+        </header>
+
+        <div className="flex-1 w-full flex items-center justify-center relative overflow-hidden">
+          {/* Main Container - No shadow or borders, pure flat layout */}
+          <div className="relative z-10 w-full max-w-[1100px] px-10 py-16 flex flex-col items-center justify-center animate-in fade-in zoom-in-[0.98] duration-700">
+          
+          {/* Text Section Removed as per request */}
 
           {/* Center Animation (3D Gears) */}
           <div className="relative mb-20 mt-8 flex items-center justify-center w-full h-[140px]">
              {/* Soft glow behind gears */}
-             <div className="absolute w-64 h-32 bg-[#4CAF50]/15 rounded-full blur-[40px]"></div>
+             <div className="absolute w-64 h-32 bg-[#6b8e23]/15 rounded-full blur-[40px]"></div>
              
              {/* 3 Interlocking Gears */}
              <div className="relative flex items-center justify-center">
@@ -421,9 +446,9 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
                 {/* Center Gear (Green) */}
                 <div className="relative z-10 animate-spin" style={{ animationDuration: '4s', animationTimingFunction: 'linear', animationDirection: 'reverse' }}>
                   <div className="relative flex items-center justify-center scale-[1.05]">
-                    <Settings className="w-[110px] h-[110px] text-[#2E7D32] drop-shadow-[0_8px_12px_rgba(0,0,0,0.4)] absolute" fill="currentColor" strokeWidth={0} />
-                    <Settings className="w-[110px] h-[110px] text-[#4CAF50]" fill="url(#greenGrad)" strokeWidth={0} />
-                    <div className="absolute w-[44px] h-[44px] bg-white rounded-full shadow-[inset_0_4px_10px_rgba(0,0,0,0.3)] flex items-center justify-center border border-[#2E7D32]/20">
+                    <Settings className="w-[110px] h-[110px] text-[#4d6b14] drop-shadow-[0_8px_12px_rgba(0,0,0,0.4)] absolute" fill="currentColor" strokeWidth={0} />
+                    <Settings className="w-[110px] h-[110px] text-[#6b8e23]" fill="url(#greenGrad)" strokeWidth={0} />
+                    <div className="absolute w-[44px] h-[44px] bg-white rounded-full shadow-[inset_0_4px_10px_rgba(0,0,0,0.3)] flex items-center justify-center border border-[#4d6b14]/20">
                        <div className="w-[20px] h-[20px] rounded-full bg-slate-100 shadow-sm border border-slate-300"></div>
                     </div>
                   </div>
@@ -446,9 +471,9 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
              <svg width="0" height="0" className="absolute pointer-events-none">
                <defs>
                  <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                   <stop offset="0%" stopColor="#81C784" />
-                   <stop offset="50%" stopColor="#4CAF50" />
-                   <stop offset="100%" stopColor="#388E3C" />
+                   <stop offset="0%" stopColor="#8fae47" />
+                   <stop offset="50%" stopColor="#6b8e23" />
+                   <stop offset="100%" stopColor="#4d6b14" />
                  </linearGradient>
                  <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                    <stop offset="0%" stopColor="#f1f5f9" />
@@ -465,26 +490,201 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
             
             <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden mb-5 relative shadow-inner">
                <div 
-                 className="h-full bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] rounded-full transition-all duration-100 ease-linear"
+                 className="h-full bg-gradient-to-r from-[#8fae47] to-[#4d6b14] rounded-full transition-all duration-100 ease-linear"
                  style={{ width: `${progress}%` }}
                >
                </div>
             </div>
             
-            <span className="text-[18px] font-[800] text-[#4CAF50] tracking-wide">{progress}%</span>
+            <span className="text-[18px] font-[800] text-[#F97316] tracking-wide">{progress}%</span>
           </div>
 
+          </div>
         </div>
       </div>
     </>
   );
 }
 
+function DrawingRegisterView({ onBack }: { onBack: () => void }) {
+  const baseData = [
+    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-CVL-FDHP-001-R01', title: 'CIVIL FOUNDATION, PLAN, FOOTING, AND TIE BEAM DETAIL DRAWING OF FEED HOPPER', discipline: 'Civil', link: '#', rev: 'R01', date: '23/08/2023', remark: '' },
+    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-01', title: 'INSERT PLATE DETAILS AT 4.0 LVL', discipline: 'Structure', link: '#', rev: '0', date: '20/06/2023', remark: '' },
+    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-02', title: 'STRUCTURE DETAIL DRAWING OF FEED HOPPER', discipline: 'Structure', link: '#', rev: '0', date: '10/10/2023', remark: '' },
+    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-03', title: 'GRIZZLY DETAIL FOR FEED HOPPER', discipline: 'Structure', link: '#', rev: '0', date: '02/08/2024', remark: '' },
+    { desc: 'Feed hopper', dwgNo: 'AAMD/066/23-24/AVF/G.A.- 001', title: 'GENERAL ARRANGEMENT DRAWING OF VIBRO FEEDER SIZE - 800 X 700', discipline: 'Equipment', link: '#', rev: '0', date: '19/08/2023', remark: '' },
+    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-01', title: 'FOUNDATION DETAIL FOR JAW CRUSHER BUILDING AT 0.000M LEVEL', discipline: 'Civil', link: '#', rev: '0', date: '23/03/2023', remark: '' },
+    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-02', title: 'COLUMN DETAIL FOR JAW CRUSHER BUILDING UPTO 2.175 M LVL', discipline: 'Civil', link: '#', rev: '0', date: '10/08/2023', remark: '' },
+    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-03', title: 'INSERT PLATE DETAIL FOR JAW CRUSHER BUILDING AT 0.000M LEVEL', discipline: 'Civil', link: '#', rev: '0', date: '19/08/2023', remark: '' },
+    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-GA-JAWC-01', title: 'GENERAL ARRANGEMENT DRAWING OF JAW CRUSHER BUILDING', discipline: 'General arrangement', link: '#', rev: '0', date: '19/10/2023', remark: '' },
+    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-STR-JAWC-01', title: 'PLAN DETAIL FOR JAW CRUSHER BUILDING AT 2.500M LEVEL', discipline: 'Structure', link: '#', rev: '0', date: '20/10/2023', remark: '' },
+  ];
+
+  const dummyData = Array.from({ length: 50 }, (_, i) => ({
+    ...baseData[i % baseData.length],
+    sr: i + 1,
+  }));
+
+  return (
+    <div className="h-screen bg-slate-50 font-sans text-slate-900 flex flex-col overflow-hidden">
+      {/* Main Passary Header */}
+      <header className="shrink-0 h-[76px] bg-white border-b border-slate-200 flex items-center justify-between px-8 z-50 shadow-sm">
+        <div className="flex items-center space-x-3.5">
+          <div className="flex items-center justify-center w-[44px] h-[44px] overflow-hidden">
+            <div className="w-full h-full bg-[#6b8e23] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+          </div>
+          <div className="flex items-center pt-1">
+            <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
+            <span className="text-[#F97316] text-[28px] font-[800] tracking-tight ml-3 mt-0.5">- DRAWING INDEX REGISTER</span>
+          </div>
+        </div>
+        
+        <div className="flex items-center space-x-3">
+          <button 
+            onClick={onBack}
+            className="px-6 py-2.5 bg-[#ed5f2b] hover:bg-[#d45224] text-white text-[14px] font-bold rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-wide uppercase"
+          >
+            BACK
+          </button>
+        </div>
+      </header>
+
+      {/* Register Content */}
+      <div className="flex-1 flex flex-col p-6 max-w-[1600px] mx-auto w-full overflow-hidden">
+        
+        {/* Top 8 Stat Cards */}
+        <div className="flex flex-wrap items-center gap-3 w-full mb-5 shrink-0">
+          {[
+            { icon: Building2, title: 'CIVIL', count: 128, iconBg: 'bg-blue-50', textCol: 'text-blue-600' },
+            { icon: Layers, title: 'STRUCTURAL', count: 86, iconBg: 'bg-orange-50', textCol: 'text-orange-600' },
+            { icon: GearIcon, title: 'MECHANICAL', count: 124, iconBg: 'bg-purple-50', textCol: 'text-purple-600' },
+            { icon: Zap, title: 'ELECTRICAL', count: 67, iconBg: 'bg-amber-50', textCol: 'text-amber-600' },
+            { icon: Waypoints, title: 'PIPING', count: 215, iconBg: 'bg-cyan-50', textCol: 'text-cyan-600' },
+            { icon: Gauge, title: 'INSTRUMENT', count: 88, iconBg: 'bg-pink-50', textCol: 'text-pink-600' },
+            { icon: Box, title: 'EQUIPMENT', count: 143, iconBg: 'bg-emerald-50', textCol: 'text-emerald-600' },
+            { icon: LayoutTemplate, title: 'GENERAL ARR.', count: 117, iconBg: 'bg-slate-100', textCol: 'text-slate-600' }
+          ].map((card, idx) => (
+            <div key={idx} className="bg-white border border-slate-200 px-4 py-2 rounded-xl flex items-center gap-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex-1 min-w-[140px]">
+              <div className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center ${card.textCol}`}>
+                <card.icon className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <div className={`text-[10px] font-bold ${card.textCol} uppercase tracking-wider`}>{card.title}</div>
+                <div className="text-[20px] font-black text-slate-800 leading-none mt-1 mb-0.5">{card.count}</div>
+                <div className="text-[10px] font-semibold text-slate-500">Drawings</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Toolbar Area */}
+        <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-4 gap-4 px-2 w-full shrink-0">
+          
+          {/* Left: Search */}
+          <div className="relative flex-1 max-w-[400px]">
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input 
+              type="text" 
+              placeholder="Search Drawing No., Title, Description..." 
+              className="pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-[13px] font-medium text-slate-700 w-full focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 placeholder:text-slate-400" 
+            />
+          </div>
+
+          {/* Center: Empty Space for Layout */}
+          <div></div>
+
+          {/* Right: Actions */}
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="hidden xl:block w-px h-8 bg-slate-200 mx-1"></div>
+            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:border-slate-300 text-green-700 font-bold text-[13px] rounded-lg shadow-sm transition-all active:scale-95">
+              <Filter className="w-4 h-4" />
+              <span>Filter</span>
+            </button>
+            <button className="flex items-center gap-2 px-4 py-2 bg-[#155e30] hover:bg-[#114b26] text-white font-bold text-[13px] rounded-lg shadow-sm transition-all active:scale-95">
+              <Plus className="w-4 h-4" strokeWidth={2.5} />
+              <span>Add New</span>
+            </button>
+            <button className="flex items-center justify-center w-9 h-9 bg-white border border-slate-200 text-green-700 hover:border-slate-300 rounded-lg shadow-sm transition-all active:scale-95">
+              <RefreshCw className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Table Area */}
+        <div className="flex-1 overflow-auto border border-slate-300 rounded-sm shadow-sm bg-white">
+          <table className="w-full text-[13px] text-center border-collapse min-w-[1200px]">
+            <thead className="bg-[#155e30] text-white sticky top-0 z-10 shadow-sm">
+              <tr>
+                {[
+                  { label: 'Sr. No.', w: 'w-[60px]' },
+                  { label: 'Description', w: 'min-w-[120px]' },
+                  { label: 'Drawing No.', w: 'min-w-[200px]' },
+                  { label: 'Drawing Title', w: 'min-w-[300px]' },
+                  { label: 'Discipline', w: 'min-w-[100px]' },
+                  { label: 'Drawing Link', w: 'min-w-[120px]' },
+                  { label: 'Revision', w: 'w-[80px]' },
+                  { label: 'Date', w: 'w-[100px]' },
+                  { label: 'Remark', w: 'w-[80px]', noSort: true }
+                ].map((th, i) => (
+                  <th key={i} className={`py-3 px-2 border-r border-green-800 font-bold sticky top-0 bg-[#155e30] z-20 shadow-sm ${th.w}`}>
+                    <div className="flex items-center justify-center gap-1.5">
+                      <span>{th.label}</span>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="text-slate-700">
+              {dummyData.map((row, idx) => (
+                <tr key={idx} className={`border-b border-slate-200 hover:bg-green-50/50 transition-colors ${idx % 2 === 0 ? 'bg-white' : 'bg-[#F9FAFB]'}`}>
+                  <td className="py-3 px-2 border-r border-slate-200 font-bold text-slate-800">{row.sr}</td>
+                  <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.desc}</td>
+                  <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.dwgNo}</td>
+                  <td className="py-3 px-4 border-r border-slate-200 text-left uppercase text-[11px] font-bold text-slate-600 leading-snug">{row.title}</td>
+                  <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.discipline}</td>
+                  <td className="py-3 px-2 border-r border-slate-200">
+                    <button className="flex items-center justify-center gap-2 px-3 py-1.5 bg-green-50 text-[#155e30] border border-green-200 rounded-md font-bold text-[12px] hover:bg-green-100 transition-colors mx-auto">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>View Drawing</span>
+                    </button>
+                  </td>
+                  <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.rev}</td>
+                  <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.date}</td>
+                  <td className="py-3 px-2">
+                    <div className="flex items-center justify-center gap-2">
+                      <span className="font-bold text-slate-400">–</span>
+                      <button className="text-slate-400 hover:text-slate-700">
+                        <MoreVertical className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        
+        {/* Footer */}
+        <div className="flex justify-between items-center mt-3 text-[12px] text-slate-600 font-semibold px-2 shrink-0">
+          <div>Note : This is system generated register</div>
+          <div></div>
+          <div>Date : 21/05/2025 | Time : 11:30 AM</div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
-  const [authState, setAuthState] = useState<'landing' | 'login' | 'loading' | 'dashboard'>('landing');
+  const [authState, setAuthState] = useState<'landing' | 'login' | 'loading' | 'dashboard' | 'register'>('landing');
 
   if (authState === 'dashboard') {
-    return <DashboardView onLogout={() => setAuthState('landing')} />;
+    return <DashboardView onLogout={() => setAuthState('landing')} onRegister={() => setAuthState('register')} />;
+  }
+  
+  if (authState === 'register') {
+    return <DrawingRegisterView onBack={() => setAuthState('dashboard')} />;
   }
   
   if (authState === 'loading') {
