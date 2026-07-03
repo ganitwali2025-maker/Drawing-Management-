@@ -570,36 +570,46 @@ function AddDrawingModal({ isOpen, onClose, onSuccess }: { isOpen: boolean, onCl
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = async () => {
-        const base64Data = (reader.result as string).split(',')[1];
-        
-        const payload = {
-          ...formData,
-          filename: file.name,
-          mimeType: file.type,
-          base64: base64Data
-        };
+        try {
+          const base64Data = (reader.result as string).split(',')[1];
+          
+          const payload = {
+            ...formData,
+            filename: file.name,
+            mimeType: file.type,
+            base64: base64Data
+          };
 
-        const sheetUrl = 'https://script.google.com/macros/s/AKfycbxP08_ft6yvOy8UoL0FsxJ4WK4OgGrLKhkG7AIc48cNTVSaw1QNR7KNZHgb8jlu1TE/exec';
-        
-        const response = await fetch(sheetUrl, {
-          method: 'POST',
-          // Apps Script requires text/plain to avoid CORS preflight issues sometimes, but application/json usually works if deployed correctly.
-          // Using text/plain is safer for Apps Script web apps to avoid CORS OPTIONS block.
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
-        });
+          const sheetUrl = 'https://script.google.com/macros/s/AKfycbxP08_ft6yvOy8UoL0FsxJ4WK4OgGrLKhkG7AIc48cNTVSaw1QNR7KNZHgb8jlu1TE/exec';
+          
+          const response = await fetch(sheetUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
 
-        const result = await response.json();
-        
-        if (result && result.status === 'success') {
-          setFormData({ desc: '', dwgNo: '', title: '', discipline: '', rev: '', date: '', remark: '' });
-          setFile(null);
-          onSuccess();
-          onClose();
-        } else {
-          setErrorMsg(result.message || 'Error saving to Google Sheets.');
+          // Check if response is actually JSON before parsing
+          const contentType = response.headers.get("content-type");
+          if (!contentType || !contentType.includes("application/json")) {
+             throw new Error("Server returned an invalid response. Please check if you deployed the New Version of Apps Script correctly.");
+          }
+
+          const result = await response.json();
+          
+          if (result && result.status === 'success') {
+            setFormData({ desc: '', dwgNo: '', title: '', discipline: '', rev: '', date: '', remark: '' });
+            setFile(null);
+            onSuccess();
+            onClose();
+          } else {
+            setErrorMsg(result.message || 'Error saving to Google Sheets.');
+          }
+        } catch (err: any) {
+          console.error(err);
+          setErrorMsg(err.message || 'Network error or invalid server response. Please try again.');
+        } finally {
+          setIsSubmitting(false);
         }
-        setIsSubmitting(false);
       };
       reader.onerror = () => {
         setErrorMsg('Failed to read file.');
