@@ -9,6 +9,24 @@ import {
   MoreVertical, ChevronsUpDown, FileSpreadsheet
 } from 'lucide-react';
 
+const baseData = [
+  { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-CVL-FDHP-001-R01', title: 'CIVIL FOUNDATION, PLAN, FOOTING, AND TIE BEAM DETAIL DRAWING OF FEED HOPPER', discipline: 'Civil', link: '#', rev: 'R01', date: '23/08/2023', remark: '' },
+  { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-01', title: 'INSERT PLATE DETAILS AT 4.0 LVL', discipline: 'Structure', link: '#', rev: '0', date: '20/06/2023', remark: '' },
+  { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-02', title: 'STRUCTURE DETAIL DRAWING OF FEED HOPPER', discipline: 'Structure', link: '#', rev: '0', date: '10/10/2023', remark: '' },
+  { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-03', title: 'GRIZZLY DETAIL FOR FEED HOPPER', discipline: 'Structure', link: '#', rev: '0', date: '02/08/2024', remark: '' },
+  { desc: 'Feed hopper', dwgNo: 'AAMD/066/23-24/AVF/G.A.- 001', title: 'GENERAL ARRANGEMENT DRAWING OF VIBRO FEEDER SIZE - 800 X 700', discipline: 'Equipment', link: '#', rev: '0', date: '19/08/2023', remark: '' },
+  { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-01', title: 'FOUNDATION DETAIL FOR JAW CRUSHER BUILDING AT 0.000M LEVEL', discipline: 'Civil', link: '#', rev: '0', date: '23/03/2023', remark: '' },
+  { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-02', title: 'COLUMN DETAIL FOR JAW CRUSHER BUILDING UPTO 2.175 M LVL', discipline: 'Civil', link: '#', rev: '0', date: '10/08/2023', remark: '' },
+  { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-03', title: 'INSERT PLATE DETAIL FOR JAW CRUSHER BUILDING AT 0.000M LEVEL', discipline: 'Civil', link: '#', rev: '0', date: '19/08/2023', remark: '' },
+  { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-GA-JAWC-01', title: 'GENERAL ARRANGEMENT DRAWING OF JAW CRUSHER BUILDING', discipline: 'General arrangement', link: '#', rev: '0', date: '19/10/2023', remark: '' },
+  { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-STR-JAWC-01', title: 'PLAN DETAIL FOR JAW CRUSHER BUILDING AT 2.500M LEVEL', discipline: 'Structure', link: '#', rev: '0', date: '20/10/2023', remark: '' },
+];
+
+const dummyData = Array.from({ length: 50 }, (_, i) => ({
+  ...baseData[i % baseData.length],
+  sr: i + 1,
+}));
+
 const SidebarItem = ({ icon: Icon, label, active = false }: { icon: any, label: string, active?: boolean }) => (
   <button
     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
@@ -83,7 +101,7 @@ const ActionCard = ({ icon: Icon, title, desc, btnText, colorTheme, onClick }: {
   );
 };
 
-function DashboardView({ onLogout, onRegister }: { onLogout: () => void, onRegister: () => void }) {
+function DashboardView({ onLogout, onRegister, counts }: { onLogout: () => void, onRegister: () => void, counts: any }) {
   return (
     <div className="min-h-screen bg-[#F4F6F4] font-sans text-slate-900 flex overflow-hidden selection:bg-[#2E7D32]/20 selection:text-[#2E7D32] antialiased relative">
       {/* Ambient background blur for color mixing */}
@@ -183,14 +201,14 @@ function DashboardView({ onLogout, onRegister }: { onLogout: () => void, onRegis
             <div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <DisciplineCard icon={Building2} title="Civil" desc="View all civil foundation, structural and architectural drawings." count={128} image="/civil-drawing-v3.png" />
-                <DisciplineCard icon={Factory} title="Structural" desc="Manage structural steel, fabrication and erection drawings." count={214} image="/structural-drawing.png" />
-                <DisciplineCard icon={GearIcon} title="Mechanical" desc="Access mechanical equipment, assembly and part drawings." count={186} image="/mechanical-drawing-white-final.png" />
-                <DisciplineCard icon={Waypoints} title="Piping" desc="Review piping layouts, isometrics and P&ID diagrams." count={162} image="/piping-drawing.png" />
-                <DisciplineCard icon={Zap} title="Electrical" desc="Electrical layouts, single line diagrams and wiring schemes." count={94} image="/electrical-drawing.jpg" />
-                <DisciplineCard icon={Gauge} title="Instrumentation" desc="Instrumentation loop diagrams, hook-ups and logic diagrams." count={88} image="/instrumentation-drawing.jpg" />
-                <DisciplineCard icon={Box} title="Equipment" desc="Vendor equipment drawings, datasheets and manuals." count={143} image="/equipment-drawing.jpg" />
-                <DisciplineCard icon={LayoutTemplate} title="General Arrangement" desc="Plant general arrangement and overall layout drawings." count={117} image="/ga-drawing.jpg" />
+                <DisciplineCard icon={Building2} title="Civil" desc="View all civil foundation, structural and architectural drawings." count={counts.civil} image="/civil-drawing-v3.png" />
+                <DisciplineCard icon={Factory} title="Structural" desc="Manage structural steel, fabrication and erection drawings." count={counts.structural} image="/structural-drawing.png" />
+                <DisciplineCard icon={GearIcon} title="Mechanical" desc="Access mechanical equipment, assembly and part drawings." count={counts.mechanical} image="/mechanical-drawing-white-final.png" />
+                <DisciplineCard icon={Waypoints} title="Piping" desc="Review piping layouts, isometrics and P&ID diagrams." count={counts.piping} image="/piping-drawing.png" />
+                <DisciplineCard icon={Zap} title="Electrical" desc="Electrical layouts, single line diagrams and wiring schemes." count={counts.electrical} image="/electrical-drawing.jpg" />
+                <DisciplineCard icon={Gauge} title="Instrumentation" desc="Instrumentation loop diagrams, hook-ups and logic diagrams." count={counts.instrument} image="/instrumentation-drawing.jpg" />
+                <DisciplineCard icon={Box} title="Equipment" desc="Vendor equipment drawings, datasheets and manuals." count={counts.equipment} image="/equipment-drawing.jpg" />
+                <DisciplineCard icon={LayoutTemplate} title="General Arrangement" desc="Plant general arrangement and overall layout drawings." count={counts.general} image="/ga-drawing.jpg" />
               </div>
             </div>
 
@@ -506,24 +524,7 @@ function LoadingView({ onComplete }: { onComplete: () => void }) {
   );
 }
 
-function DrawingRegisterView({ onBack }: { onBack: () => void }) {
-  const baseData = [
-    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-CVL-FDHP-001-R01', title: 'CIVIL FOUNDATION, PLAN, FOOTING, AND TIE BEAM DETAIL DRAWING OF FEED HOPPER', discipline: 'Civil', link: '#', rev: 'R01', date: '23/08/2023', remark: '' },
-    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-01', title: 'INSERT PLATE DETAILS AT 4.0 LVL', discipline: 'Structure', link: '#', rev: '0', date: '20/06/2023', remark: '' },
-    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-02', title: 'STRUCTURE DETAIL DRAWING OF FEED HOPPER', discipline: 'Structure', link: '#', rev: '0', date: '10/10/2023', remark: '' },
-    { desc: 'Feed hopper', dwgNo: 'SIES-RMIPL-STR-FDHP-03', title: 'GRIZZLY DETAIL FOR FEED HOPPER', discipline: 'Structure', link: '#', rev: '0', date: '02/08/2024', remark: '' },
-    { desc: 'Feed hopper', dwgNo: 'AAMD/066/23-24/AVF/G.A.- 001', title: 'GENERAL ARRANGEMENT DRAWING OF VIBRO FEEDER SIZE - 800 X 700', discipline: 'Equipment', link: '#', rev: '0', date: '19/08/2023', remark: '' },
-    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-01', title: 'FOUNDATION DETAIL FOR JAW CRUSHER BUILDING AT 0.000M LEVEL', discipline: 'Civil', link: '#', rev: '0', date: '23/03/2023', remark: '' },
-    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-02', title: 'COLUMN DETAIL FOR JAW CRUSHER BUILDING UPTO 2.175 M LVL', discipline: 'Civil', link: '#', rev: '0', date: '10/08/2023', remark: '' },
-    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-CVL-JAWC-03', title: 'INSERT PLATE DETAIL FOR JAW CRUSHER BUILDING AT 0.000M LEVEL', discipline: 'Civil', link: '#', rev: '0', date: '19/08/2023', remark: '' },
-    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-GA-JAWC-01', title: 'GENERAL ARRANGEMENT DRAWING OF JAW CRUSHER BUILDING', discipline: 'General arrangement', link: '#', rev: '0', date: '19/10/2023', remark: '' },
-    { desc: 'Jaw crusher', dwgNo: 'SIES-RMIPL-STR-JAWC-01', title: 'PLAN DETAIL FOR JAW CRUSHER BUILDING AT 2.500M LEVEL', discipline: 'Structure', link: '#', rev: '0', date: '20/10/2023', remark: '' },
-  ];
-
-  const dummyData = Array.from({ length: 50 }, (_, i) => ({
-    ...baseData[i % baseData.length],
-    sr: i + 1,
-  }));
+function DrawingRegisterView({ onBack, tableData, loading, counts }: { onBack: () => void, tableData: any[], loading: boolean, counts: any }) {
 
   return (
     <div className="h-screen bg-slate-50 font-sans text-slate-900 flex flex-col overflow-hidden">
@@ -555,14 +556,14 @@ function DrawingRegisterView({ onBack }: { onBack: () => void }) {
         {/* Top 8 Stat Cards */}
         <div className="flex flex-wrap items-center gap-3 w-full mb-5 shrink-0">
           {[
-            { icon: Building2, title: 'CIVIL', count: 128, iconBg: 'bg-blue-50', textCol: 'text-blue-600' },
-            { icon: Layers, title: 'STRUCTURAL', count: 86, iconBg: 'bg-orange-50', textCol: 'text-orange-600' },
-            { icon: GearIcon, title: 'MECHANICAL', count: 124, iconBg: 'bg-purple-50', textCol: 'text-purple-600' },
-            { icon: Zap, title: 'ELECTRICAL', count: 67, iconBg: 'bg-amber-50', textCol: 'text-amber-600' },
-            { icon: Waypoints, title: 'PIPING', count: 215, iconBg: 'bg-cyan-50', textCol: 'text-cyan-600' },
-            { icon: Gauge, title: 'INSTRUMENT', count: 88, iconBg: 'bg-pink-50', textCol: 'text-pink-600' },
-            { icon: Box, title: 'EQUIPMENT', count: 143, iconBg: 'bg-emerald-50', textCol: 'text-emerald-600' },
-            { icon: LayoutTemplate, title: 'GENERAL ARR.', count: 117, iconBg: 'bg-slate-100', textCol: 'text-slate-600' }
+            { icon: Building2, title: 'CIVIL', count: counts.civil, iconBg: 'bg-blue-50', textCol: 'text-blue-600' },
+            { icon: Layers, title: 'STRUCTURAL', count: counts.structural, iconBg: 'bg-orange-50', textCol: 'text-orange-600' },
+            { icon: GearIcon, title: 'MECHANICAL', count: counts.mechanical, iconBg: 'bg-purple-50', textCol: 'text-purple-600' },
+            { icon: Zap, title: 'ELECTRICAL', count: counts.electrical, iconBg: 'bg-amber-50', textCol: 'text-amber-600' },
+            { icon: Waypoints, title: 'PIPING', count: counts.piping, iconBg: 'bg-cyan-50', textCol: 'text-cyan-600' },
+            { icon: Gauge, title: 'INSTRUMENT', count: counts.instrument, iconBg: 'bg-pink-50', textCol: 'text-pink-600' },
+            { icon: Box, title: 'EQUIPMENT', count: counts.equipment, iconBg: 'bg-emerald-50', textCol: 'text-emerald-600' },
+            { icon: LayoutTemplate, title: 'GENERAL ARR.', count: counts.general, iconBg: 'bg-slate-100', textCol: 'text-slate-600' }
           ].map((card, idx) => (
             <div key={idx} className="bg-white border border-slate-200 px-4 py-2 rounded-xl flex items-center gap-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex-1 min-w-[140px]">
               <div className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center ${card.textCol}`}>
@@ -635,7 +636,14 @@ function DrawingRegisterView({ onBack }: { onBack: () => void }) {
               </tr>
             </thead>
             <tbody className="text-slate-700">
-              {dummyData.map((row, idx) => (
+              {loading ? (
+                <tr>
+                  <td colSpan={9} className="py-10 text-center text-slate-500 font-medium">
+                    <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2 text-[#6b8e23]" />
+                    Loading drawings...
+                  </td>
+                </tr>
+              ) : tableData.map((row, idx) => (
                 <tr key={idx} className={`border-b border-slate-200 hover:bg-green-50/50 transition-colors ${idx % 2 === 0 ? 'bg-white' : 'bg-[#F9FAFB]'}`}>
                   <td className="py-3 px-2 border-r border-slate-200 font-bold text-slate-800">{row.sr}</td>
                   <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.desc}</td>
@@ -643,19 +651,20 @@ function DrawingRegisterView({ onBack }: { onBack: () => void }) {
                   <td className="py-3 px-4 border-r border-slate-200 text-left uppercase text-[11px] font-bold text-slate-600 leading-snug">{row.title}</td>
                   <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.discipline}</td>
                   <td className="py-3 px-2 border-r border-slate-200">
-                    <button className="flex items-center justify-center gap-2 px-3 py-1.5 bg-green-50 text-[#155e30] border border-green-200 rounded-md font-bold text-[12px] hover:bg-green-100 transition-colors mx-auto">
-                      <FileText className="w-3.5 h-3.5" />
-                      <span>View Drawing</span>
-                    </button>
+                    {row.link && row.link !== '' ? (
+                      <a href={row.link} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 px-3 py-1.5 bg-green-50 text-[#155e30] border border-green-200 rounded-md font-bold text-[12px] hover:bg-green-100 transition-colors mx-auto">
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>View Drawing</span>
+                      </a>
+                    ) : (
+                      <span className="text-slate-400 font-medium text-[12px]">-</span>
+                    )}
                   </td>
                   <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.rev}</td>
                   <td className="py-3 px-2 border-r border-slate-200 font-semibold">{row.date}</td>
                   <td className="py-3 px-2">
                     <div className="flex items-center justify-center gap-2">
-                      <span className="font-bold text-slate-400">–</span>
-                      <button className="text-slate-400 hover:text-slate-700">
-                        <MoreVertical className="w-4 h-4" />
-                      </button>
+                      <span className="font-bold text-slate-600">{row.remark || '–'}</span>
                     </div>
                   </td>
                 </tr>
@@ -679,12 +688,62 @@ function DrawingRegisterView({ onBack }: { onBack: () => void }) {
 export default function App() {
   const [authState, setAuthState] = useState<'landing' | 'login' | 'loading' | 'dashboard' | 'register'>('landing');
 
+  const [tableData, setTableData] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchSheetData = async () => {
+      const sheetUrl = import.meta.env.VITE_SHEET_API_URL;
+      if (!sheetUrl) {
+        setTableData(dummyData);
+        setLoading(false);
+        return;
+      }
+      
+      try {
+        const response = await fetch(sheetUrl);
+        const result = await response.json();
+        if (result && result.length > 0) {
+          setTableData(result);
+        } else {
+          setTableData(dummyData);
+        }
+      } catch (err) {
+        console.error("Failed to fetch sheet data", err);
+        setTableData(dummyData);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchSheetData();
+  }, []);
+
+  const getDisciplineCount = (keywords: string[]) => {
+    if (loading) return 0;
+    return tableData.filter(row => {
+      const disc = (row.discipline || '').toLowerCase();
+      return keywords.some(k => disc.includes(k));
+    }).length;
+  };
+
+  const disciplineCounts = {
+    civil: getDisciplineCount(['civil']),
+    structural: getDisciplineCount(['structur']),
+    mechanical: getDisciplineCount(['mechanic']),
+    electrical: getDisciplineCount(['electric']),
+    piping: getDisciplineCount(['piping', 'pipe']),
+    instrument: getDisciplineCount(['instrument']),
+    equipment: getDisciplineCount(['equip']),
+    general: getDisciplineCount(['general', 'ga', 'g.a']),
+  };
+
   if (authState === 'dashboard') {
-    return <DashboardView onLogout={() => setAuthState('landing')} onRegister={() => setAuthState('register')} />;
+    return <DashboardView onLogout={() => setAuthState('landing')} onRegister={() => setAuthState('register')} counts={disciplineCounts} />;
   }
   
   if (authState === 'register') {
-    return <DrawingRegisterView onBack={() => setAuthState('dashboard')} />;
+    return <DrawingRegisterView onBack={() => setAuthState('dashboard')} tableData={tableData} loading={loading} counts={disciplineCounts} />;
   }
   
   if (authState === 'loading') {
