@@ -133,7 +133,7 @@ export const DisciplineDrawingsView: React.FC<DisciplineDrawingsViewProps> = ({ 
                     {/* Title */}
                     <div className="mb-5 flex-1">
                       <div className="text-[10px] font-medium text-slate-500 mb-1">Drawing Title</div>
-                      <h3 className="text-[13px] sm:text-[14px] font-bold text-[#0F172A] leading-[1.4] uppercase line-clamp-3" title={dwg.title}>
+                      <h3 className="text-[13px] sm:text-[14px] font-medium text-[#0F172A] leading-[1.4] uppercase line-clamp-3" title={dwg.title}>
                         {dwg.title}
                       </h3>
                     </div>

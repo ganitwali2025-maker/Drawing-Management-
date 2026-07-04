@@ -4,18 +4,19 @@ import { LandingHeaderProps, DashboardHeaderProps, RegisterHeaderProps } from '.
 
 export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
   return (
-    <header className="h-[84px] bg-white/50 backdrop-blur-md border-b border-white/40 flex items-center justify-between px-8 lg:px-12 sticky top-0 z-50 shadow-[0_4px_30px_rgb(0,0,0,0.02)]">
-      <div className="flex items-center space-x-3.5">
-        <div className="flex items-center justify-center w-[48px] h-[48px] overflow-hidden">
-          <div className="w-full h-full bg-[#6b8e23] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+    <header className="h-[84px] bg-[#FFFFFF]/70 backdrop-blur-xl border-b border-[#EAEAEA] flex items-center justify-between px-8 lg:px-12 sticky top-0 z-50 shadow-[0_4px_24px_rgb(0,0,0,0.02)] transition-all">
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center justify-center w-[44px] h-[44px] overflow-hidden">
+          <div className="w-full h-full bg-[#5D8F2A] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
         </div>
-        <div className="flex items-center pt-1">
-          <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
-          <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Drawing Management Dashboard</span>
+        <div className="flex flex-col lg:flex-row lg:items-center">
+          <span className="text-[24px] lg:text-[26px] font-[800] text-[#5D8F2A] tracking-tight leading-none">Passary Refractories</span>
+          <span className="hidden lg:block text-[#EAEAEA] mx-3 text-2xl font-light">|</span>
+          <span className="text-[#F97316] text-[20px] lg:text-[24px] font-[700] tracking-tight leading-none lg:mt-0 mt-1">Drawing Management Dashboard</span>
         </div>
       </div>
       
-      <div className="flex items-center space-x-8 text-[14px] font-bold text-slate-900 tracking-wider">
+      <div className="hidden lg:flex items-center space-x-10 text-[13px] font-[700] text-[#111827] tracking-widest uppercase">
         <a href="#" className="hover:text-[#F97316] transition-colors">HOME</a>
         <a href="#" className="hover:text-[#F97316] transition-colors">ABOUT US</a>
         <a href="#" className="hover:text-[#F97316] transition-colors">SERVICES</a>
@@ -23,10 +24,16 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
         
         <button 
           onClick={onLogin}
-          className="px-8 py-3 bg-[#F97316] hover:bg-[#ea580c] text-white text-[14px] font-bold rounded-xl shadow-[0_4px_14px_rgba(249,115,22,0.3)] transition-all active:scale-95 flex items-center justify-center tracking-wide uppercase group"
+          className="px-8 py-3.5 bg-[#F97316] hover:bg-[#ea580c] text-white text-[13px] font-[800] rounded-full shadow-[0_8px_20px_rgba(249,115,22,0.25)] hover:shadow-[0_8px_25px_rgba(249,115,22,0.35)] transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase group"
         >
           START
-          <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+        </button>
+      </div>
+      
+      <div className="lg:hidden">
+        <button onClick={onLogin} className="px-6 py-2.5 bg-[#F97316] text-white text-[12px] font-[800] rounded-full shadow-[0_8px_20px_rgba(249,115,22,0.25)] flex items-center justify-center tracking-widest uppercase">
+          START
         </button>
       </div>
     </header>
@@ -35,27 +42,28 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
 
 export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRegister }) => {
   return (
-    <header className="h-[76px] bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-10">
+    <header className="h-[76px] bg-[#FFFFFF]/80 backdrop-blur-xl border-b border-[#EAEAEA] flex items-center justify-between px-8 sticky top-0 z-10 shadow-[0_4px_24px_rgb(0,0,0,0.02)]">
       <div className="flex items-center space-x-3.5">
-        <div className="flex items-center justify-center w-[44px] h-[44px] overflow-hidden">
-          <div className="w-full h-full bg-[#6b8e23] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+        <div className="flex items-center justify-center w-[40px] h-[40px] overflow-hidden">
+          <div className="w-full h-full bg-[#5D8F2A] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
         </div>
         <div className="flex items-center pt-1">
-          <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
-          <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Drawing Management Dashboard</span>
+          <span className="text-[24px] font-[800] text-[#5D8F2A] tracking-tight">Passary Refractories</span>
+          <span className="text-[#EAEAEA] mx-3 text-2xl font-light">|</span>
+          <span className="text-[#F97316] text-[24px] font-[700] tracking-tight mt-0.5">Drawing Management Dashboard</span>
         </div>
       </div>
       
-      <div className="flex items-center space-x-3">
-        <button className="w-10 h-10 rounded-full border border-slate-100 shadow-[0_2px_8px_rgb(0,0,0,0.04)] flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors">
-          <Settings className="w-[18px] h-[18px]" strokeWidth={1.5} />
+      <div className="flex items-center space-x-4">
+        <button className="w-10 h-10 rounded-full border border-[#EAEAEA] bg-white shadow-sm flex items-center justify-center text-[#4b5563] hover:bg-[#FAFAF8] transition-colors">
+          <Settings className="w-[18px] h-[18px]" strokeWidth={2} />
         </button>
         
-        <div className="w-px h-6 bg-slate-200 mx-2"></div>
+        <div className="w-px h-6 bg-[#EAEAEA]"></div>
         
         <button 
           onClick={onLogout}
-          className="ml-2 px-6 py-2.5 bg-[#ed5f2b] hover:bg-[#d45224] text-white text-[14px] font-bold rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-wide uppercase"
+          className="px-6 py-2.5 bg-[#FFFFFF] border border-[#EAEAEA] hover:border-[#F97316] hover:text-[#F97316] text-[#111827] text-[13px] font-[800] rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase"
         >
           BACK
         </button>
@@ -66,21 +74,22 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRe
 
 export const RegisterHeader: React.FC<RegisterHeaderProps> = ({ onBack }) => {
   return (
-    <header className="shrink-0 h-[76px] bg-white border-b border-slate-200 flex items-center justify-between px-8 z-50 shadow-sm">
+    <header className="shrink-0 h-[76px] bg-[#FFFFFF]/80 backdrop-blur-xl border-b border-[#EAEAEA] flex items-center justify-between px-8 z-50 shadow-[0_4px_24px_rgb(0,0,0,0.02)]">
       <div className="flex items-center space-x-3.5">
-        <div className="flex items-center justify-center w-[44px] h-[44px] overflow-hidden">
-          <div className="w-full h-full bg-[#6b8e23] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+        <div className="flex items-center justify-center w-[40px] h-[40px] overflow-hidden">
+          <div className="w-full h-full bg-[#5D8F2A] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
         </div>
         <div className="flex items-center pt-1">
-          <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
-          <span className="text-[#F97316] text-[28px] font-[800] tracking-tight ml-3 mt-0.5">- Drawing Index Register</span>
+          <span className="text-[24px] font-[800] text-[#5D8F2A] tracking-tight">Passary Refractories</span>
+          <span className="text-[#EAEAEA] mx-3 text-2xl font-light">|</span>
+          <span className="text-[#F97316] text-[24px] font-[800] tracking-tight mt-0.5">Drawing Index Register</span>
         </div>
       </div>
       
       <div className="flex items-center space-x-3">
         <button 
           onClick={onBack}
-          className="px-6 py-2.5 bg-[#ed5f2b] hover:bg-[#d45224] text-white text-[14px] font-bold rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-wide uppercase"
+          className="px-6 py-2.5 bg-[#FFFFFF] border border-[#EAEAEA] hover:border-[#F97316] hover:text-[#F97316] text-[#111827] text-[13px] font-[800] rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase"
         >
           BACK
         </button>

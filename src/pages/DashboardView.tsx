@@ -17,10 +17,10 @@ interface DashboardViewProps {
 
 export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegister, onDisciplineClick, counts }) => {
   return (
-    <div className="min-h-screen bg-[#F4F6F4] font-sans text-slate-900 flex overflow-hidden selection:bg-[#2E7D32]/20 selection:text-[#2E7D32] antialiased relative">
+    <div className="min-h-screen bg-[#F8F9FA] font-sans text-[#111827] flex overflow-hidden selection:bg-[#5D8F2A]/20 selection:text-[#5D8F2A] antialiased relative">
       {/* Ambient background blur for color mixing */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#2E7D32]/[0.03] blur-[100px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[-10%] right-[-5%] w-[30%] h-[50%] rounded-full bg-[#FF6B35]/[0.02] blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#5D8F2A]/[0.03] blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[-10%] right-[-5%] w-[30%] h-[50%] rounded-full bg-[#F97316]/[0.02] blur-[120px] pointer-events-none z-0"></div>
       
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden relative z-10">
@@ -33,47 +33,47 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
           <div className="max-w-[1600px] mx-auto space-y-10">
             
             {/* Hero Card */}
-            <div className="relative bg-white rounded-[24px] overflow-hidden border border-slate-200/60 min-h-[320px] flex items-center shadow-sm group">
+            <div className="relative bg-white rounded-[22px] overflow-hidden border border-[#E8E8E8] min-h-[320px] flex items-center shadow-[0_8px_30px_rgba(0,0,0,0.02)] group">
               {/* Premium Abstract Background */}
               <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E8F5E9]/80 via-white to-[#FFE8D6]/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#5D8F2A]/5 via-white to-[#F97316]/5"></div>
                 {/* Decorative faint dot grid */}
-                <div className="absolute left-0 top-0 w-2/3 h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNkMWQ1ZGIiLz48L3N2Zz4=')] opacity-50 mix-blend-multiply"></div>
+                <div className="absolute left-0 top-0 w-2/3 h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNkMWQ1ZGIiLz48L3N2Zz4=')] opacity-30 mix-blend-multiply"></div>
               </div>
 
               {/* Hero Content (Left Side - 55%) */}
               <div className="relative z-10 px-10 py-12 lg:px-14 lg:py-14 w-full lg:w-[55%] h-full flex flex-col justify-center">
 
                 <div className="mb-2.5">
-                  <span className="text-[20px] lg:text-[22px] font-bold tracking-wide text-slate-900">
+                  <span className="text-[20px] lg:text-[22px] font-bold tracking-wide text-[#111827]">
                     Welcome to
                   </span>
                 </div>
-                <h1 className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] xl:text-[32px] font-[900] text-blue-900 mb-4 tracking-tight leading-[1.15] whitespace-nowrap">
+                <h1 className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] xl:text-[32px] font-[900] text-[#111827] mb-4 tracking-tight leading-[1.15] whitespace-nowrap">
                   Refrasynth Minerals India Private Limited
                 </h1>
 
-                <p className="text-[14px] text-slate-600 mb-8 max-w-[460px] leading-[1.6] font-medium">
+                <p className="text-[14px] text-slate-500 mb-8 max-w-[460px] leading-[1.6] font-medium">
                   Manage all engineering drawings in one place. Easily organize files, find the required drawings, upload new documents, and keep project information secure and well arranged.
                 </p>
                 
                 {/* Quick Access Buttons */}
                 <div className="mt-2">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <button onClick={onRegister} className="flex items-center gap-3 px-3 py-2 bg-green-50/80 border border-green-100 rounded-xl hover:bg-green-100/80 transition-colors group">
-                      <div className="w-7 h-7 rounded-lg bg-green-100/80 flex items-center justify-center text-green-700 group-hover:scale-105 transition-transform">
+                  <div className="flex flex-wrap items-center gap-3.5">
+                    <button onClick={onRegister} className="flex items-center gap-3 px-4 py-2 bg-[#5D8F2A]/10 border border-[#5D8F2A]/20 rounded-xl hover:bg-[#5D8F2A]/20 transition-all group">
+                      <div className="w-7 h-7 rounded-lg bg-[#5D8F2A] flex items-center justify-center text-white group-hover:scale-105 transition-transform">
                         <FileText className="w-4 h-4" strokeWidth={2.5} />
                       </div>
-                      <span className="text-[13px] font-bold text-green-700">Drawing Register</span>
-                      <ArrowRight className="w-4 h-4 text-green-600" />
+                      <span className="text-[13px] font-bold text-[#5D8F2A]">Drawing Register</span>
+                      <ArrowRight className="w-4 h-4 text-[#5D8F2A] group-hover:translate-x-0.5 transition-transform" />
                     </button>
                     
-                    <button className="flex items-center gap-3 px-3 py-2 bg-blue-50/80 border border-blue-100 rounded-xl hover:bg-blue-100/80 transition-colors group">
-                      <div className="w-7 h-7 rounded-lg bg-blue-100/80 flex items-center justify-center text-blue-700 group-hover:scale-105 transition-transform">
+                    <button className="flex items-center gap-3 px-4 py-2 bg-[#F97316]/10 border border-[#F97316]/20 rounded-xl hover:bg-[#F97316]/20 transition-all group">
+                      <div className="w-7 h-7 rounded-lg bg-[#F97316] flex items-center justify-center text-white group-hover:scale-105 transition-transform">
                         <PlusCircle className="w-4 h-4" strokeWidth={2.5} />
                       </div>
-                      <span className="text-[13px] font-bold text-blue-700">Add New Drawing</span>
-                      <ArrowRight className="w-4 h-4 text-blue-600" />
+                      <span className="text-[13px] font-bold text-[#F97316]">Add New Drawing</span>
+                      <ArrowRight className="w-4 h-4 text-[#F97316] group-hover:translate-x-0.5 transition-transform" />
                     </button>
                   </div>
                 </div>

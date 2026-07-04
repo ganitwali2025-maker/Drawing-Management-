@@ -85,17 +85,17 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
           <div></div>
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-3 shrink-0 font-poppins">
             <div className="hidden xl:block w-px h-8 bg-slate-200 mx-1"></div>
-            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:border-slate-300 text-green-700 font-bold text-[13px] rounded-lg shadow-sm transition-all active:scale-95">
+            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:border-slate-300 text-green-700 font-[600] text-[15px] font-poppins rounded-lg shadow-sm transition-all active:scale-95 align-middle">
               <Filter className="w-4 h-4" />
               <span>Filter</span>
             </button>
-            <button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 px-4 py-2 bg-[#155e30] hover:bg-[#114b26] text-white font-bold text-[13px] rounded-lg shadow-sm transition-all active:scale-95">
+            <button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 px-4 py-2 bg-[#155e30] hover:bg-[#114b26] text-white font-[600] text-[15px] font-poppins rounded-lg shadow-sm transition-all active:scale-95 align-middle">
               <Plus className="w-4 h-4" strokeWidth={2.5} />
               <span>Add New</span>
             </button>
-            <button onClick={onRefresh} className="flex items-center justify-center w-9 h-9 bg-white border border-slate-200 text-green-700 hover:border-slate-300 rounded-lg shadow-sm transition-all active:scale-95">
+            <button onClick={onRefresh} className="flex items-center justify-center w-9 h-9 bg-white border border-slate-200 text-green-700 hover:border-slate-300 rounded-lg shadow-sm transition-all active:scale-95 align-middle">
               <RefreshCw className="w-4 h-4" />
             </button>
           </div>
@@ -105,7 +105,7 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
         <Table tableData={filteredData} loading={loading} />
         
         {/* Footer */}
-        <div className="flex justify-between items-center mt-3 text-[12px] text-slate-600 font-semibold px-2 shrink-0">
+        <div className="flex justify-between items-center mt-3 text-[14px] text-slate-600 font-[500] font-poppins px-2 shrink-0">
           <div>Note : This is system generated register</div>
           <div></div>
           <div>Date : 21/05/2025 | Time : 11:30 AM</div>
