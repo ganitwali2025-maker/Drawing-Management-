@@ -43,12 +43,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
 
               {/* Hero Content (Left Side - 55%) */}
               <div className="relative z-10 px-10 py-12 lg:px-14 lg:py-14 w-full lg:w-[55%] h-full flex flex-col justify-center">
+
                 <div className="mb-2.5">
-                  <span className="text-[18px] font-bold text-[#6b8e23] tracking-wide">Welcome to Passary Refractories</span>
+                  <span className="text-[20px] lg:text-[22px] font-bold tracking-wide text-slate-900">
+                    Welcome to
+                  </span>
                 </div>
-                <h1 className="text-[32px] sm:text-[38px] font-[800] text-slate-900 mb-4 tracking-tight leading-[1.15]">
-                  Drawing Management Dashboard
+                <h1 className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] xl:text-[32px] font-[900] text-blue-900 mb-4 tracking-tight leading-[1.15] whitespace-nowrap">
+                  Refrasynth Minerals India Private Limited
                 </h1>
+
                 <p className="text-[14px] text-slate-600 mb-8 max-w-[460px] leading-[1.6] font-medium">
                   Manage all engineering drawings in one place. Easily organize files, find the required drawings, upload new documents, and keep project information secure and well arranged.
                 </p>
@@ -64,12 +68,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
                       <ArrowRight className="w-4 h-4 text-green-600" />
                     </button>
                     
-                    <button className="flex items-center gap-3 px-3 py-2 bg-purple-50/80 border border-purple-100 rounded-xl hover:bg-purple-100/80 transition-colors group">
-                      <div className="w-7 h-7 rounded-lg bg-purple-100/80 flex items-center justify-center text-purple-700 group-hover:scale-105 transition-transform">
+                    <button className="flex items-center gap-3 px-3 py-2 bg-blue-50/80 border border-blue-100 rounded-xl hover:bg-blue-100/80 transition-colors group">
+                      <div className="w-7 h-7 rounded-lg bg-blue-100/80 flex items-center justify-center text-blue-700 group-hover:scale-105 transition-transform">
                         <PlusCircle className="w-4 h-4" strokeWidth={2.5} />
                       </div>
-                      <span className="text-[13px] font-bold text-purple-700">Add New Drawing</span>
-                      <ArrowRight className="w-4 h-4 text-purple-600" />
+                      <span className="text-[13px] font-bold text-blue-700">Add New Drawing</span>
+                      <ArrowRight className="w-4 h-4 text-blue-600" />
                     </button>
                   </div>
                 </div>
@@ -115,7 +119,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
                   title="Add New Drawing" 
                   desc="Upload and create new drawing records with metadata."
                   btnText="Add Drawing"
-                  colorTheme="purple"
+                  colorTheme="blue"
                 />
                 <ActionCard 
                   icon={RefreshCw} 
@@ -129,7 +133,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
                   title="Approval Workflow" 
                   desc="Review, approve and track drawing approval workflows."
                   btnText="Go to Workflow"
-                  colorTheme="amber"
+                  colorTheme="white"
                 />
               </div>
             </div>

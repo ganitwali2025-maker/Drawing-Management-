@@ -29,10 +29,14 @@ export const DisciplineDrawingsView: React.FC<DisciplineDrawingsViewProps> = ({ 
   };
 
   // Filter drawings based on search
-  const filteredDrawings = drawings.filter(d => 
-    d.dwgNo?.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    d.title?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredDrawings = drawings.filter(d => {
+    const search = searchTerm.toLowerCase();
+    return (
+      d.dwgNo?.toLowerCase().includes(search) || 
+      d.title?.toLowerCase().includes(search) ||
+      d.desc?.toLowerCase().includes(search)
+    );
+  });
 
   const totalItems = filteredDrawings.length;
   const currentDrawings = filteredDrawings;

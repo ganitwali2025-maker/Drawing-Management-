@@ -26,6 +26,16 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
   onRefresh 
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredData = tableData.filter(d => {
+    const search = searchTerm.toLowerCase();
+    return (
+      d.desc?.toLowerCase().includes(search) ||
+      d.title?.toLowerCase().includes(search) ||
+      d.dwgNo?.toLowerCase().includes(search)
+    );
+  });
 
   return (
     <div className="h-screen bg-slate-50 font-sans text-slate-900 flex flex-col overflow-hidden">
@@ -66,7 +76,10 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
         <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-4 gap-4 px-2 w-full shrink-0">
           
           {/* Left: Search */}
-          <SearchBar />
+          <SearchBar 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
 
           {/* Center: Empty Space for Layout */}
           <div></div>
@@ -89,7 +102,7 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
         </div>
 
         {/* Table Area */}
-        <Table tableData={tableData} loading={loading} />
+        <Table tableData={filteredData} loading={loading} />
         
         {/* Footer */}
         <div className="flex justify-between items-center mt-3 text-[12px] text-slate-600 font-semibold px-2 shrink-0">

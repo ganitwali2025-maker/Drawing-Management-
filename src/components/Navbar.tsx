@@ -11,7 +11,7 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
         </div>
         <div className="flex items-center pt-1">
           <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
-          <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Forging Energy-Efficient Solutions</span>
+          <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Drawing Management Dashboard</span>
         </div>
       </div>
       
@@ -42,7 +42,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRe
         </div>
         <div className="flex items-center pt-1">
           <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
-          <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Forging Energy-Efficient Solutions</span>
+          <span className="text-[#F97316] text-[28px] font-[700] tracking-tight ml-3 mt-0.5">Drawing Management Dashboard</span>
         </div>
       </div>
       
@@ -73,7 +73,7 @@ export const RegisterHeader: React.FC<RegisterHeaderProps> = ({ onBack }) => {
         </div>
         <div className="flex items-center pt-1">
           <span className="text-[28px] font-[800] text-[#6b8e23] tracking-tight">Passary Refractories</span>
-          <span className="text-[#F97316] text-[800] tracking-tight ml-3 mt-0.5">- DRAWING INDEX REGISTER</span>
+          <span className="text-[#F97316] text-[28px] font-[800] tracking-tight ml-3 mt-0.5">- Drawing Index Register</span>
         </div>
       </div>
       

@@ -34,11 +34,22 @@ export const LandingView: React.FC<LandingViewProps> = ({ view, setView, onLogin
           <div className="w-full lg:w-[50%] xl:w-[45%] flex flex-col justify-center">
               <div className="animate-in fade-in slide-in-from-left-4 duration-500">
 
-                <h1 className="text-[52px] lg:text-[64px] font-[800] text-slate-900 mb-2 tracking-tight leading-[1.1]">
-                  Factory Engineering<br/>Drawing Management
+                <h1 className="text-[28px] sm:text-[36px] lg:text-[44px] xl:text-[52px] font-[700] text-slate-900 tracking-tight leading-[1.1] whitespace-nowrap flex gap-x-[0.25em]">
+                  {['Refrasynth', 'Minerals', 'India', 'Private', 'Limited'].map((word, i) => (
+                    <span key={i} className="relative group cursor-default inline-block">
+                      <span className="relative z-10">{word}</span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-[4px] bg-[#F97316] transition-all duration-300 ease-out group-hover:w-full"></span>
+                    </span>
+                  ))}
                 </h1>
-                
-                <div className="w-24 h-[3px] mt-4 bg-[#F97316] mb-8 rounded-full"></div>
+                <h2 className="text-[20px] sm:text-[26px] lg:text-[32px] font-[700] text-slate-900 mt-2 mb-8 tracking-tight flex gap-x-[0.25em]">
+                  {['Engineering', 'Drawing'].map((word, i) => (
+                    <span key={i} className="relative group cursor-default inline-block">
+                      <span className="relative z-10">{word}</span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-[3px] bg-[#F97316] transition-all duration-300 ease-out group-hover:w-full"></span>
+                    </span>
+                  ))}
+                </h2>
                 
                 <p className="text-[18px] text-slate-900 mb-12 max-w-[560px] leading-[1.7] font-medium">
                   We deliver accurate, high-quality engineering drawings that streamline planning, ensure seamless execution, and drive reliable industrial performance.
@@ -85,9 +96,17 @@ export const LandingView: React.FC<LandingViewProps> = ({ view, setView, onLogin
 
         {/* Footer Area for Disciplines */}
         <div className="w-full max-w-[1600px] mx-auto px-8 pb-10 mt-auto relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700 -translate-y-[15px] lg:-translate-y-[20px]">
-          <p className="text-[15px] lg:text-[16px] font-bold text-slate-900 leading-[2.2] text-center w-full tracking-wide">
-            Civil • Structural • Mechanical • Piping • Electrical • Instrumentation • Equipment • General Arrangement (GA) • Architectural • Process • P&ID • Isometric • Fabrication • As-Built • Vendor Drawings
-          </p>
+          <div className="text-[15px] lg:text-[16px] font-[800] text-slate-900 leading-[2.2] text-center w-full tracking-wide flex flex-wrap justify-center items-center">
+            {['Civil', 'Structural', 'Mechanical', 'Piping', 'Electrical', 'Instrumentation', 'Equipment', 'General Arrangement (GA)', 'Architectural', 'Process', 'P&ID', 'Isometric', 'Fabrication'].map((item, index, arr) => (
+              <React.Fragment key={index}>
+                <span className="relative group cursor-pointer inline-block mx-1.5">
+                  <span className="relative z-10">{item}</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2.5px] bg-[#F97316] transition-all duration-300 ease-out group-hover:w-full"></span>
+                </span>
+                {index < arr.length - 1 && <span className="text-slate-900/60 mx-1">•</span>}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
         
         {/* Theme Wallpaper Background (Absolute to entire screen) */}

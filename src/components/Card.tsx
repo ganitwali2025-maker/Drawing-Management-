@@ -59,10 +59,10 @@ export const ActionCard: React.FC<ActionCardProps> = ({
   onClick 
 }) => {
   const themes = {
-    green: { bg: 'bg-green-100', text: 'text-green-700', hover: 'hover:border-green-300', border: 'border-green-200' },
-    purple: { bg: 'bg-purple-100', text: 'text-purple-700', hover: 'hover:border-purple-300', border: 'border-purple-200' },
-    orange: { bg: 'bg-orange-100', text: 'text-orange-700', hover: 'hover:border-orange-300', border: 'border-orange-200' },
-    amber: { bg: 'bg-amber-100', text: 'text-amber-700', hover: 'hover:border-amber-300', border: 'border-amber-200' },
+    green: { bg: 'bg-[#6b8e23]/10', text: 'text-[#6b8e23]', hover: 'hover:border-[#6b8e23]/40', border: 'border-[#6b8e23]/20' },
+    blue: { bg: 'bg-blue-50', text: 'text-blue-600', hover: 'hover:border-blue-300', border: 'border-blue-200' },
+    orange: { bg: 'bg-[#F97316]/10', text: 'text-[#F97316]', hover: 'hover:border-[#F97316]/40', border: 'border-[#F97316]/20' },
+    white: { bg: 'bg-slate-50', text: 'text-slate-700', hover: 'hover:border-slate-300', border: 'border-slate-200' },
   };
   const theme = themes[colorTheme];
 
