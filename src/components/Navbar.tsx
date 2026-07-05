@@ -1,11 +1,12 @@
 import React from 'react';
 import { ArrowRight, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { LandingHeaderProps, DashboardHeaderProps, RegisterHeaderProps } from '../types/index';
 
 export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
   return (
     <header className="h-[84px] bg-[#FFFFFF]/70 backdrop-blur-xl border-b border-[#EAEAEA] flex items-center justify-between px-8 lg:px-12 sticky top-0 z-50 shadow-[0_4px_24px_rgb(0,0,0,0.02)] transition-all">
-      <div className="flex items-center space-x-4">
+      <Link to="/" className="flex items-center space-x-4">
         <div className="flex items-center justify-center w-[44px] h-[44px] overflow-hidden">
           <div className="w-full h-full bg-[#5D8F2A] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
         </div>
@@ -14,14 +15,9 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
           <span className="hidden lg:block text-[#EAEAEA] mx-3 text-2xl font-light">|</span>
           <span className="text-[#F97316] text-[20px] lg:text-[24px] font-[700] tracking-tight leading-none lg:mt-0 mt-1">Drawing Management Dashboard</span>
         </div>
-      </div>
+      </Link>
       
       <div className="hidden lg:flex items-center space-x-10 text-[13px] font-[700] text-[#111827] tracking-widest uppercase">
-        <a href="#" className="hover:text-[#F97316] transition-colors">HOME</a>
-        <a href="#" className="hover:text-[#F97316] transition-colors">ABOUT US</a>
-        <a href="#" className="hover:text-[#F97316] transition-colors">SERVICES</a>
-        <a href="#" className="hover:text-[#F97316] transition-colors">CONTACT</a>
-        
         <button 
           onClick={onLogin}
           className="px-8 py-3.5 bg-[#F97316] hover:bg-[#ea580c] text-white text-[13px] font-[800] rounded-full shadow-[0_8px_20px_rgba(249,115,22,0.25)] hover:shadow-[0_8px_25px_rgba(249,115,22,0.35)] transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase group"
@@ -63,7 +59,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRe
         
         <button 
           onClick={onLogout}
-          className="px-6 py-2.5 bg-[#FFFFFF] border border-[#EAEAEA] hover:border-[#F97316] hover:text-[#F97316] text-[#111827] text-[13px] font-[800] rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase"
+          className="px-6 py-2.5 bg-[#F97316] hover:bg-[#ea580c] text-white text-[13px] font-[800] rounded-full shadow-[0_8px_20px_rgba(249,115,22,0.25)] transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase"
         >
           BACK
         </button>
@@ -89,7 +85,7 @@ export const RegisterHeader: React.FC<RegisterHeaderProps> = ({ onBack }) => {
       <div className="flex items-center space-x-3">
         <button 
           onClick={onBack}
-          className="px-6 py-2.5 bg-[#FFFFFF] border border-[#EAEAEA] hover:border-[#F97316] hover:text-[#F97316] text-[#111827] text-[13px] font-[800] rounded-full shadow-sm transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase"
+          className="px-6 py-2.5 bg-[#F97316] hover:bg-[#ea580c] text-white text-[13px] font-[800] rounded-full shadow-[0_8px_20px_rgba(249,115,22,0.25)] transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase"
         >
           BACK
         </button>

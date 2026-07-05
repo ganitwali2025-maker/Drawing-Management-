@@ -1,17 +1,10 @@
 import React from 'react';
 import { 
-  Target, Settings as GearIcon, ShieldCheck,
+  ArrowRight, ShieldCheck, GitMerge, Box, TrendingUp,
   Landmark, Frame, Settings2, Wrench, Zap, Gauge, 
-  Factory, LayoutTemplate, Building2, FlaskConical, 
-  GitMerge, Box, PenTool 
+  Factory, LayoutTemplate, Building2, FlaskConical, PenTool
 } from 'lucide-react';
-import { LandingHeader } from '../components/Navbar';
-
-interface LandingViewProps {
-  view: 'landing' | 'login';
-  setView: (view: 'landing' | 'login') => void;
-  onLogin: () => void;
-}
+import { Link } from 'react-router-dom';
 
 const categories = [
   { name: 'Civil', icon: Landmark },
@@ -164,84 +157,104 @@ const DisciplineMarqueeItem: React.FC<{
   );
 };
 
-export const LandingView: React.FC<LandingViewProps> = ({ view, setView, onLogin }) => {
+interface AboutViewProps {
+  onLogin: () => void;
+}
+
+export const AboutView: React.FC<AboutViewProps> = ({ onLogin }) => {
   return (
-    <div className="min-h-screen bg-[#FFFFFF] font-sans text-[#111827] flex flex-col selection:bg-[#5D8F2A]/20 selection:text-[#5D8F2A] antialiased relative overflow-hidden">
-      {/* Premium background lighting effects */}
-      <div className="absolute top-[-10%] right-[10%] w-[50%] h-[50%] rounded-full bg-[#5D8F2A]/[0.03] blur-[120px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#F97316]/[0.03] blur-[100px] pointer-events-none z-0"></div>
-      <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-gradient-to-r from-transparent to-[#FAFAF8] blur-[80px] pointer-events-none z-0"></div>
+    <div className="h-screen bg-[#FFFFFF] font-sans text-[#111827] flex flex-col selection:bg-[#5D8F2A]/20 selection:text-[#5D8F2A] antialiased relative overflow-hidden">
+      
+      {/* Background ambient glow */}
+      <div className="absolute top-[-10%] right-[10%] w-[50%] h-[50%] rounded-full bg-[#5D8F2A]/[0.02] blur-[120px] pointer-events-none z-0"></div>
       
       {/* Header */}
-      <LandingHeader onLogin={onLogin} />
+      <header className="h-[64px] bg-[#FFFFFF]/70 backdrop-blur-xl border-b border-[#EAEAEA] flex items-center justify-between px-6 lg:px-10 sticky top-0 z-50 shadow-[0_4px_24px_rgb(0,0,0,0.02)] transition-all shrink-0">
+        <Link to="/" className="flex items-center space-x-3">
+          <div className="flex items-center justify-center w-[36px] h-[36px] overflow-hidden">
+            <div className="w-full h-full bg-[#5D8F2A] scale-[2.5]" style={{ maskImage: 'url(/logo.png)', maskSize: 'contain', maskPosition: 'center', maskRepeat: 'no-repeat', WebkitMaskImage: 'url(/logo.png)', WebkitMaskSize: 'contain', WebkitMaskPosition: 'center', WebkitMaskRepeat: 'no-repeat' }}></div>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-center">
+            <span className="text-[20px] lg:text-[22px] font-[800] text-[#5D8F2A] tracking-tight leading-none">Passary Refractories</span>
+            <span className="hidden lg:block text-[#EAEAEA] mx-3 text-xl font-light">|</span>
+            <span className="text-[#F97316] text-[18px] lg:text-[20px] font-[700] tracking-tight leading-none lg:mt-0 mt-0.5">Drawing Management Dashboard</span>
+          </div>
+        </Link>
+        
+        <div className="hidden lg:flex items-center space-x-8 text-[12px] font-[700] text-[#111827] tracking-widest uppercase">
+          <button 
+            onClick={onLogin}
+            className="px-6 py-2.5 bg-[#F97316] hover:bg-[#ea580c] text-white text-[12px] font-[800] rounded-full shadow-[0_4px_10px_rgba(249,115,22,0.25)] transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase group"
+          >
+            GET STARTED
+            <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+          </button>
+        </div>
+      </header>
 
-      {/* Hero Area */}
+      {/* Main Content */}
       <main className="flex-1 flex flex-col relative z-10 w-full justify-between overflow-hidden">
-        <div className="w-full max-w-[1800px] mx-auto px-6 lg:px-12 pt-4 lg:pt-8 pb-0 flex-1 flex flex-col justify-start">
-          <div className="flex flex-col lg:flex-row items-start justify-between w-full h-full relative">
+        
+        {/* Hero Section */}
+        <section className="w-full flex-1 flex flex-col justify-center p-4 lg:px-10 max-w-[1600px] mx-auto">
+          <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-6 relative">
             
             {/* Left Side: Content */}
-            <div className="w-full lg:w-[45%] flex flex-col justify-start animate-in fade-in slide-in-from-bottom-8 duration-700 z-20 pt-2 lg:pt-6">
-              
-              <h1 className="text-[32px] sm:text-[42px] lg:text-[52px] xl:text-[60px] font-[800] text-[#111827] tracking-tight leading-[1.1] mb-2 drop-shadow-sm">
-                Refrasynth Minerals India<br />Private Limited
+            <div className="w-full lg:w-[50%] flex flex-col justify-center animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <span className="text-[11px] font-[900] text-[#5D8F2A] tracking-[0.2em] uppercase mb-3 bg-[#5D8F2A]/10 self-start px-3.5 py-1.5 rounded-full border border-[#5D8F2A]/20">ABOUT US</span>
+              <h1 className="text-[32px] sm:text-[36px] lg:text-[46px] font-[900] text-[#111827] tracking-tight leading-[1.1] mb-2.5">
+                About Refrasynth Minerals<br/>India Private Limited
               </h1>
               
-              <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-[700] mb-6 tracking-tight flex gap-2.5">
-                <span className="text-[#5D8F2A]">Engineering</span>
-                <span className="text-[#F97316]">Drawing</span>
+              <h2 className="text-[18px] lg:text-[24px] font-[700] mb-3 tracking-tight">
+                <span className="text-[#F97316]">Engineering Drawing Management Dashboard</span>
               </h2>
               
-              <p className="text-[17px] lg:text-[19px] text-[#4b5563] mb-10 max-w-[580px] leading-[1.6] font-medium">
-                We deliver accurate, high-quality engineering drawings that streamline planning, ensure seamless execution, and drive reliable industrial performance.
+              <p className="text-[15px] lg:text-[17px] text-[#4b5563] mb-5 leading-[1.55] font-medium max-w-[600px]">
+                Our platform provides a centralized, secure, and intelligent engineering drawing management system designed for industrial projects. Manage drawing revisions, approvals, workflow automation, document control, and collaboration between design, production, QA/QC, and project teams with maximum efficiency.
               </p>
 
-              <div className="grid grid-cols-3 gap-4 xl:gap-5 max-w-[560px] mb-8 lg:mb-0">
-                {/* Accuracy */}
-                <div className="flex flex-col items-center text-center group bg-[#FFFFFF] border border-[#EAEAEA] p-5 rounded-[20px] shadow-[0_4px_24px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_32px_rgb(93,143,42,0.08)] hover:-translate-y-1 transition-all relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-[3px] bg-[#5D8F2A] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#FAFAF8] flex items-center justify-center mb-4 text-[#5D8F2A] group-hover:scale-110 transition-transform">
-                    <Target className="w-6 h-6" strokeWidth={2} />
+              {/* 4 Feature Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                {[
+                  { icon: ShieldCheck, title: 'Secure & Centralized', desc: 'Stored securely with role-based access.' },
+                  { icon: GitMerge, title: 'Streamlined Workflow', desc: 'Automate approvals and revisions.' },
+                  { icon: Box, title: 'Better Collaboration', desc: 'Real-time coordination between teams.' },
+                  { icon: TrendingUp, title: 'Improved Efficiency', desc: 'Reduce errors and improve execution.' }
+                ].map((feat, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center p-4 rounded-[16px] bg-[#FFFFFF] border border-[#EAEAEA] shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:border-[#5D8F2A]/30 hover:shadow-[0_4px_15px_rgba(93,143,42,0.06)] transition-all group">
+                    <div className="w-12 h-12 rounded-xl bg-[#5D8F2A]/10 text-[#5D8F2A] flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300">
+                      <feat.icon className="w-6 h-6" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-[12px] font-[800] text-[#111827] mb-1 leading-tight">{feat.title}</h3>
+                    <p className="text-[11px] text-[#6b7280] font-medium leading-snug">{feat.desc}</p>
                   </div>
-                  <h3 className="text-[12px] font-[800] text-[#111827] mb-2 tracking-widest uppercase">Accuracy</h3>
-                  <p className="text-[12px] text-[#6b7280] font-medium leading-relaxed">Precise drawings<br/>you can rely on.</p>
-                </div>
-                {/* Efficiency */}
-                <div className="flex flex-col items-center text-center group bg-[#FFFFFF] border border-[#EAEAEA] p-5 rounded-[20px] shadow-[0_4px_24px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_32px_rgb(249,115,22,0.08)] hover:-translate-y-1 transition-all relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-[3px] bg-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#FAFAF8] flex items-center justify-center mb-4 text-[#F97316] group-hover:scale-110 transition-transform">
-                    <GearIcon className="w-6 h-6" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-[12px] font-[800] text-[#111827] mb-2 tracking-widest uppercase">Efficiency</h3>
-                  <p className="text-[12px] text-[#6b7280] font-medium leading-relaxed">Streamlined planning,<br/>better results.</p>
-                </div>
-                {/* Reliability */}
-                <div className="flex flex-col items-center text-center group bg-[#FFFFFF] border border-[#EAEAEA] p-5 rounded-[20px] shadow-[0_4px_24px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_32px_rgb(93,143,42,0.08)] hover:-translate-y-1 transition-all relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-[3px] bg-[#5D8F2A] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#FAFAF8] flex items-center justify-center mb-4 text-[#5D8F2A] group-hover:scale-110 transition-transform">
-                    <ShieldCheck className="w-6 h-6" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-[12px] font-[800] text-[#111827] mb-2 tracking-widest uppercase">Reliability</h3>
-                  <p className="text-[12px] text-[#6b7280] font-medium leading-relaxed">Built on standards,<br/>delivered with trust.</p>
-                </div>
+                ))}
+              </div>
+
+              <div className="flex">
+                <button 
+                  onClick={onLogin}
+                  className="px-7 py-3.5 bg-[#5D8F2A] hover:bg-[#4b7322] text-white text-[13px] font-[800] rounded-full shadow-[0_4px_15px_rgba(93,143,42,0.25)] hover:shadow-[0_8px_20px_rgba(93,143,42,0.35)] transition-all active:scale-95 flex items-center justify-center tracking-widest uppercase group"
+                >
+                  START MANAGEMENT FLOW
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+                </button>
               </div>
             </div>
 
             {/* Right Side: Illustration */}
-            <div className="w-full lg:w-[55%] flex justify-end items-start h-full relative z-10 pointer-events-none mt-6 lg:mt-[-40px]">
-              <div className="relative w-full max-w-[1000px] xl:max-w-[1300px] ml-auto translate-x-4 lg:translate-x-12 -translate-y-[180px] lg:-translate-y-[220px]">
-                {/* Soft glow behind illustration */}
-                <div className="absolute inset-0 bg-radial from-[#5D8F2A]/5 to-transparent blur-3xl rounded-full scale-110 -z-10"></div>
+            <div className="w-full lg:w-[48%] flex justify-end items-center relative">
+              <div className="relative w-full max-w-[550px] ml-auto">
                 <img 
-                  src="/hero-illustration.png" 
-                  alt="Industrial Engineering Illustration" 
-                  className="w-full h-auto object-contain object-right drop-shadow-sm opacity-95 scale-[1.25] lg:scale-[1.35] xl:scale-[1.45] origin-top-right"
+                  src="/about-3d.png" 
+                  alt="Industrial Construction Visualization" 
+                  className="w-full h-auto object-contain drop-shadow-[0_15px_35px_rgba(0,0,0,0.08)] mix-blend-multiply contrast-[1.05]"
                 />
               </div>
             </div>
-
           </div>
-        </div>
+        </section>
 
         {/* Footer Area for Disciplines */}
         <div className="w-full bg-white/70 backdrop-blur-md border-t border-[#EAEAEA] shadow-[0_-4px_20px_rgba(0,0,0,0.02)] relative z-20 py-3 px-4 overflow-hidden shrink-0 select-none group mt-auto">
@@ -262,6 +275,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ view, setView, onLogin
             ))}
           </div>
         </div>
+
       </main>
     </div>
   );

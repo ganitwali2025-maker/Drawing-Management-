@@ -6,10 +6,28 @@ import { LoadingView } from '../pages/LoadingView';
 import { DashboardView } from '../pages/DashboardView';
 import { DrawingRegisterView } from '../pages/DrawingRegisterView';
 import { DisciplineDrawingsView } from '../pages/DisciplineDrawingsView';
+import { AboutView } from '../pages/AboutView';
+import { ServicesView } from '../pages/ServicesView';
+import { ContactView } from '../pages/ContactView';
 
 import { dummyData } from '../data/drawings';
 import { GOOGLE_SHEETS_API_URL } from '../utils/constants';
 import { Drawing, DisciplineCounts } from '../types/index';
+
+function AboutViewWrapper() {
+  const navigate = useNavigate();
+  return <AboutView onLogin={() => navigate('/loading')} />;
+}
+
+function ServicesViewWrapper() {
+  const navigate = useNavigate();
+  return <ServicesView onLogin={() => navigate('/loading')} />;
+}
+
+function ContactViewWrapper() {
+  const navigate = useNavigate();
+  return <ContactView onLogin={() => navigate('/loading')} />;
+}
 
 function LandingViewWrapper() {
   const navigate = useNavigate();
@@ -156,11 +174,14 @@ export const AppRoutes: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingViewWrapper />} />
+        <Route path="/about" element={<AboutViewWrapper />} />
+        <Route path="/services" element={<ServicesViewWrapper />} />
+        <Route path="/contact" element={<ContactViewWrapper />} />
         <Route path="/loading" element={<LoadingViewWrapper />} />
         <Route path="/dashboard" element={<DashboardViewWrapper counts={disciplineCounts} />} />
         <Route path="/register" element={<DrawingRegisterViewWrapper tableData={tableData} loading={loading} counts={disciplineCounts} onRefresh={refreshData} />} />
         <Route path="/drawings/:disciplineId" element={<DynamicDisciplineViewWrapper tableData={tableData} />} />
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

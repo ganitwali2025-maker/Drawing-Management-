@@ -49,11 +49,6 @@ export const LoadingView: React.FC<LoadingViewProps> = ({ onComplete }) => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8 text-[14px] font-bold text-slate-900 tracking-wider">
-            <a href="#" className="hover:text-[#F97316] transition-colors">HOME</a>
-            <a href="#" className="hover:text-[#F97316] transition-colors">ABOUT US</a>
-            <a href="#" className="hover:text-[#F97316] transition-colors">SERVICES</a>
-            <a href="#" className="hover:text-[#F97316] transition-colors">CONTACT</a>
-            
             <button 
               disabled
               className="px-8 py-3 bg-[#F97316] text-white text-[14px] font-bold rounded-xl shadow-[0_4px_14px_rgba(249,115,22,0.3)] transition-all flex items-center justify-center tracking-wide uppercase opacity-80 cursor-not-allowed"

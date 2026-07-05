@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Building2, Layers, Settings as GearIcon, Zap, Waypoints, Gauge, Box, LayoutTemplate,
   Filter, Plus, RefreshCw
@@ -27,6 +27,22 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formattedDate = currentTime.toLocaleDateString('en-GB', {
+    day: '2-digit', month: '2-digit', year: 'numeric'
+  });
+  
+  const formattedTime = currentTime.toLocaleTimeString('en-US', {
+    hour: '2-digit', minute: '2-digit', hour12: true
+  });
 
   const filteredData = tableData.filter(d => {
     const search = searchTerm.toLowerCase();
@@ -108,7 +124,7 @@ export const DrawingRegisterView: React.FC<DrawingRegisterViewProps> = ({
         <div className="flex justify-between items-center mt-3 text-[14px] text-slate-600 font-[500] font-poppins px-2 shrink-0">
           <div>Note : This is system generated register</div>
           <div></div>
-          <div>Date : 21/05/2025 | Time : 11:30 AM</div>
+          <div>Date : {formattedDate} | Time : {formattedTime}</div>
         </div>
 
       </div>
