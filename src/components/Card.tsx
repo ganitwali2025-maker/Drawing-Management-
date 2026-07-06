@@ -35,8 +35,8 @@ export const DisciplineCard: React.FC<DisciplineCardProps> = ({
           </div>
         </div>
         <div className="flex flex-col items-end">
-          <span className="text-[20px] font-[800] text-[#111827]">{count}</span>
-          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Drawings</span>
+          <span className="text-[20px] font-[600] text-[#111827]">{count}</span>
+          <span className="text-[9px] font-bold text-[#6B7280] uppercase tracking-wider">Drawings</span>
         </div>
       </div>
 

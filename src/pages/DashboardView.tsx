@@ -34,11 +34,19 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
             
             {/* Hero Card */}
             <div className="relative bg-white rounded-[22px] overflow-hidden border border-[#E8E8E8] min-h-[320px] flex items-center shadow-[0_8px_30px_rgba(0,0,0,0.02)] group">
-              {/* Premium Abstract Background */}
-              <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#5D8F2A]/5 via-white to-[#F97316]/5"></div>
-                {/* Decorative faint dot grid */}
-                <div className="absolute left-0 top-0 w-2/3 h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNkMWQ1ZGIiLz48L3N2Zz4=')] opacity-30 mix-blend-multiply"></div>
+              {/* Premium Abstract Background with Color Effects */}
+              <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                {/* Base soft gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#F7FBF5] via-white to-[#FFF8F2]"></div>
+                
+                {/* Soft Green Glow (Left) */}
+                <div className="absolute -left-[10%] -top-[10%] w-[600px] h-[600px] rounded-full bg-[#5D8F2A] opacity-[0.06] blur-[100px]"></div>
+                
+                {/* Soft Orange Glow (Right) */}
+                <div className="absolute -right-[5%] -bottom-[10%] w-[700px] h-[700px] rounded-full bg-[#F97316] opacity-[0.06] blur-[100px]"></div>
+                
+                {/* Decorative faint dot grid over the entire banner */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNkMWQ1ZGIiLz48L3N2Zz4=')] opacity-30 mix-blend-multiply"></div>
               </div>
 
               {/* Hero Content (Left Side - 55%) */}
