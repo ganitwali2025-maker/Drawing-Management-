@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Loader2, FileText } from 'lucide-react';
 import { TableProps } from '../types/index';
 
 export const Table: React.FC<TableProps> = ({ tableData, loading }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex-1 overflow-auto border border-slate-300 rounded-sm shadow-sm bg-white font-poppins">
       <table className="w-full text-[15px] font-[500] leading-[1.6] text-center border-collapse min-w-[1200px]">
@@ -44,10 +46,10 @@ export const Table: React.FC<TableProps> = ({ tableData, loading }) => {
               <td className="py-3 px-2 border-r border-slate-200 font-[600] text-[#1F2937] text-center align-middle">{row.discipline}</td>
               <td className="py-3 px-2 border-r border-slate-200 align-middle">
                 {row.link && row.link !== '' ? (
-                  <a href={row.link} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 px-3 py-1.5 bg-green-50 text-[#155e30] border border-green-200 rounded-md font-[600] text-[15px] font-poppins hover:bg-green-100 transition-colors mx-auto align-middle">
+                  <button onClick={(e) => { e.stopPropagation(); navigate(`/drawing/detail/${encodeURIComponent(row.dwgNo)}`); }} className="flex items-center justify-center gap-2 px-3 py-1.5 bg-green-50 text-[#155e30] border border-green-200 rounded-md font-[600] text-[15px] font-poppins hover:bg-green-100 transition-colors mx-auto align-middle">
                     <FileText className="w-3.5 h-3.5" />
-                    <span>View Drawing</span>
-                  </a>
+                    <span>View Detail</span>
+                  </button>
                 ) : (
                   <span className="text-slate-400 font-[500] text-[15px] align-middle">-</span>
                 )}

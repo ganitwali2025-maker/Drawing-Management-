@@ -30,6 +30,7 @@ export interface LandingHeaderProps {
 export interface DashboardHeaderProps {
   onLogout: () => void;
   onRegister: () => void;
+  title?: string;
 }
 
 export interface RegisterHeaderProps {
@@ -70,4 +71,27 @@ export interface AddDrawingModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
+}
+
+export interface BOMItem {
+  srNo: number;
+  itemDescription: string;
+  materialGrade: string;
+  qty: number;
+  length: number;
+  unitWeight: number;
+  totalWeight: number;
+}
+
+export interface DrawingDetail extends Drawing {
+  projectName?: string;
+  areaLocation?: string;
+  sheetSize?: string;
+  scale?: string;
+  createdBy?: string;
+  checkedBy?: string;
+  approvedBy?: string;
+  status?: string;
+  description?: string;
+  bomItems?: BOMItem[];
 }

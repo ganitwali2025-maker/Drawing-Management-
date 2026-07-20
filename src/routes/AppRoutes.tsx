@@ -9,6 +9,7 @@ import { DisciplineDrawingsView } from '../pages/DisciplineDrawingsView';
 import { AboutView } from '../pages/AboutView';
 import { ServicesView } from '../pages/ServicesView';
 import { ContactView } from '../pages/ContactView';
+import { DrawingDetailView } from '../pages/DrawingDetailView';
 
 import { dummyData } from '../data/drawings';
 import { GOOGLE_SHEETS_API_URL } from '../utils/constants';
@@ -70,6 +71,23 @@ function DrawingRegisterViewWrapper({ tableData, loading, counts, onRefresh }: {
       loading={loading} 
       counts={counts} 
       onRefresh={onRefresh} 
+    />
+  );
+}
+
+function DrawingDetailViewWrapper({ tableData, counts }: { tableData: Drawing[], counts: DisciplineCounts }) {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  
+  // Find drawing or use null to show default dummy data in component
+  const drawing = tableData.find(d => d.dwgNo === id) || null;
+
+  return (
+    <DrawingDetailView 
+      onBack={() => navigate('/register')} 
+      drawing={drawing} 
+      counts={counts} 
+      onLogout={() => navigate('/')} 
     />
   );
 }
@@ -180,6 +198,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="/loading" element={<LoadingViewWrapper />} />
         <Route path="/dashboard" element={<DashboardViewWrapper counts={disciplineCounts} />} />
         <Route path="/register" element={<DrawingRegisterViewWrapper tableData={tableData} loading={loading} counts={disciplineCounts} onRefresh={refreshData} />} />
+        <Route path="/drawing/detail/:id" element={<DrawingDetailViewWrapper tableData={tableData} counts={disciplineCounts} />} />
         <Route path="/drawings/:disciplineId" element={<DynamicDisciplineViewWrapper tableData={tableData} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

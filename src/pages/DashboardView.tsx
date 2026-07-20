@@ -124,24 +124,27 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onLogout, onRegist
                 />
                 <ActionCard 
                   icon={PlusCircle} 
-                  title="Add New Drawing" 
-                  desc="Upload and create new drawing records with metadata."
-                  btnText="Add Drawing"
+                  title="Drawing Detail View" 
+                  desc="Access the comprehensive drawing detail page with viewer."
+                  btnText="Open Detail"
                   colorTheme="blue"
+                  onClick={() => window.location.href = '/drawing/detail/SI-REQ-CVL-FDHP-001-R01'}
                 />
                 <ActionCard 
                   icon={RefreshCw} 
-                  title="Revision Management" 
-                  desc="Manage drawing revisions, history and version control."
-                  btnText="Manage Revisions"
+                  title="BOM Sheet Viewer" 
+                  desc="View the detailed Bill of Materials linked to drawings."
+                  btnText="View BOM Sheet"
                   colorTheme="orange"
+                  onClick={() => window.location.href = '/drawing/detail/SI-REQ-CVL-FDHP-001-R01'}
                 />
                 <ActionCard 
                   icon={ShieldCheck} 
-                  title="Approval Workflow" 
-                  desc="Review, approve and track drawing approval workflows."
-                  btnText="Go to Workflow"
+                  title="Steel Consumption" 
+                  desc="Analyze the steel consumption report for specific drawings."
+                  btnText="View Report"
                   colorTheme="white"
+                  onClick={() => window.location.href = '/drawing/detail/SI-REQ-CVL-FDHP-001-R01'}
                 />
               </div>
             </div>

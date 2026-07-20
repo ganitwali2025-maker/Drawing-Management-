@@ -36,7 +36,7 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ onLogin }) => {
   );
 };
 
-export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRegister }) => {
+export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRegister, title = "Drawing Management Dashboard" }) => {
   return (
     <header className="h-[76px] bg-[#FFFFFF]/80 backdrop-blur-xl border-b border-[#EAEAEA] flex items-center justify-between px-8 sticky top-0 z-10 shadow-[0_4px_24px_rgb(0,0,0,0.02)]">
       <div className="flex items-center space-x-3.5">
@@ -46,7 +46,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onLogout, onRe
         <div className="flex items-center pt-1">
           <span className="text-[24px] font-[800] text-[#5D8F2A] tracking-tight">Passary Refractories</span>
           <span className="text-[#EAEAEA] mx-3 text-2xl font-light">|</span>
-          <span className="text-[#F97316] text-[24px] font-[700] tracking-tight mt-0.5">Drawing Management Dashboard</span>
+          <span className="text-[#F97316] text-[24px] font-[700] tracking-tight mt-0.5">{title}</span>
         </div>
       </div>
       
